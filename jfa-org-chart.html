@@ -5,577 +5,705 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jazz Forum Arts — Organizational Chart</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-  @font-face {
-    font-family: 'Norwester';
-    src: url('https://cdn.jsdelivr.net/gh/jamiewilson/predawn@master/fonts/norwester.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-  }
+@font-face {
+  font-family: 'Norwester';
+  src: url('https://cdn.jsdelivr.net/gh/jamiewilson/predawn@master/fonts/norwester.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-  :root {
-    --jfa-black: #000000;
-    --jfa-gray: #2D2D2D;
-    --jfa-turquoise: #008DB9;
-    --jfa-white: #FFFFFF;
-    --jfa-open: #C75000;
-    --line-color: #555555;
-  }
+:root {
+  --jfa-black: #000000;
+  --jfa-gray: #2D2D2D;
+  --jfa-turquoise: #008DB9;
+  --jfa-turquoise-light: #E6F5FA;
+  --jfa-turquoise-mid: #B3E0ED;
+  --jfa-white: #FFFFFF;
+  --jfa-bg: #F4F6F8;
+  --jfa-card-bg: #FFFFFF;
+  --jfa-text: #1A1A1A;
+  --jfa-text-secondary: #555555;
+  --jfa-border: #D9DDE3;
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  --dept-leadership: #008DB9;
+  --dept-education: #2E8B57;
+  --dept-operations: #D4760A;
+  --dept-fb: #B5395B;
+  --dept-finance: #6B5B95;
+  --dept-sound: #4A7C96;
+}
 
-  body {
-    background-color: var(--jfa-black);
-    color: var(--jfa-white);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    min-height: 100vh;
-    overflow-x: auto;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  header {
-    padding: 32px 40px 0 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+body {
+  background-color: var(--jfa-bg);
+  color: var(--jfa-text);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  min-height: 100vh;
+}
 
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-  }
+h1, h2, h3, h4 {
+  font-family: 'Norwester', Impact, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-  header .logo-text {
-    font-family: 'Norwester', Impact, 'Arial Black', sans-serif;
-    text-transform: uppercase;
-    font-size: 28px;
-    letter-spacing: 2px;
-    color: var(--jfa-turquoise);
-  }
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--jfa-black) 0%, var(--jfa-gray) 100%);
+  color: var(--jfa-white);
+  padding: 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
 
-  header .subtitle {
-    font-family: 'Norwester', Impact, 'Arial Black', sans-serif;
-    text-transform: uppercase;
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: var(--jfa-white);
-    opacity: 0.7;
-  }
+.header-left { display: flex; align-items: center; gap: 20px; }
 
-  .toggle-wrap {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+.logo {
+  font-family: 'Norwester', Impact, sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--jfa-turquoise);
+  line-height: 1.1;
+}
 
-  .toggle-label {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.6);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
+.logo span {
+  color: var(--jfa-white);
+  font-size: 12px;
+  display: block;
+  letter-spacing: 3px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
 
-  .toggle-label.active { color: var(--jfa-turquoise); }
+.header h1 { font-size: 20px; letter-spacing: 2px; font-weight: normal; }
 
-  .toggle-switch {
-    position: relative;
-    width: 48px;
-    height: 26px;
-    background: var(--jfa-gray);
-    border: 2px solid #555;
-    cursor: pointer;
-    border-radius: 0;
-    transition: background 0.2s;
-  }
+.header-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
-  .toggle-switch.on {
-    background: var(--jfa-turquoise);
-    border-color: var(--jfa-turquoise);
-  }
+.search-box { position: relative; }
 
-  .toggle-switch .knob {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 18px;
-    height: 18px;
-    background: var(--jfa-white);
-    border-radius: 0;
-    transition: left 0.2s;
-  }
+.search-box input {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  color: var(--jfa-white);
+  padding: 8px 12px 8px 34px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  width: 220px;
+  outline: none;
+  transition: all 0.2s;
+}
 
-  .toggle-switch.on .knob { left: 24px; }
+.search-box input::placeholder { color: rgba(255,255,255,0.5); }
+.search-box input:focus { border-color: var(--jfa-turquoise); background: rgba(255,255,255,0.18); }
 
-  h1 {
-    font-family: 'Norwester', Impact, 'Arial Black', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 32px;
-    text-align: center;
-    padding: 28px 0 8px 0;
-    color: var(--jfa-white);
-  }
+.search-box svg {
+  position: absolute; left: 10px; top: 50%; transform: translateY(-50%); opacity: 0.5;
+}
 
-  .chart-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    padding: 0 20px 20px 20px;
-  }
+.toggle-btn {
+  background: rgba(255,255,255,0.1);
+  color: var(--jfa-white);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  padding: 8px 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
 
-  svg.org-chart { display: block; margin: 0 auto; }
+.toggle-btn:hover { background: rgba(255,255,255,0.2); }
+.toggle-btn.active { background: var(--jfa-turquoise); border-color: var(--jfa-turquoise); }
 
-  /* ——— Footer ——— */
-  .payroll-footer {
-    background: var(--jfa-gray);
-    text-align: center;
-    padding: 22px 20px;
-    margin-top: 12px;
-    border-radius: 0;
-  }
+/* Summary bar */
+.summary-bar {
+  background: var(--jfa-white);
+  border-bottom: 1px solid var(--jfa-border);
+  padding: 14px 32px;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
-  .payroll-footer .label {
-    font-family: 'Norwester', Impact, 'Arial Black', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: 15px;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 6px;
-  }
+.summary-stat { display: flex; flex-direction: column; }
 
-  .payroll-footer .amount {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 28px;
-    color: var(--jfa-turquoise);
-  }
+.summary-stat .label {
+  font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--jfa-text-secondary); font-weight: 600;
+}
 
-  .payroll-footer .budget {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    color: rgba(255,255,255,0.5);
-    margin-top: 4px;
-  }
+.summary-stat .value { font-size: 18px; font-weight: 700; color: var(--jfa-text); }
+.summary-stat .value.accent { color: var(--jfa-turquoise); }
 
-  .payroll-footer .bar-track {
-    width: 340px;
-    max-width: 90%;
-    height: 10px;
-    background: rgba(255,255,255,0.12);
-    margin: 12px auto 0 auto;
-    border-radius: 0;
-    overflow: hidden;
-  }
+.budget-bar-wrapper { flex: 1; min-width: 200px; max-width: 350px; }
+.budget-bar-track { background: #E8EAED; height: 8px; width: 100%; }
+.budget-bar-fill { height: 100%; background: var(--jfa-turquoise); transition: width 0.5s ease; }
 
-  .payroll-footer .bar-fill {
-    height: 100%;
-    background: var(--jfa-turquoise);
-    border-radius: 0;
-    transition: width 0.4s ease;
-  }
+/* Legend */
+.legend {
+  padding: 12px 32px; display: flex; gap: 20px; flex-wrap: wrap;
+  align-items: center; background: var(--jfa-white); border-bottom: 1px solid var(--jfa-border);
+}
 
-  .payroll-footer .breakdown {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    margin-top: 14px;
-    flex-wrap: wrap;
-  }
+.legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--jfa-text-secondary);
+}
 
-  .payroll-footer .breakdown .item {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    color: rgba(255,255,255,0.45);
-  }
+.legend-dot { width: 10px; height: 10px; }
 
-  .payroll-footer .breakdown .item strong {
-    color: rgba(255,255,255,0.75);
-    font-weight: 600;
-  }
+/* === TIER-BASED ORG CHART === */
+.org-container { padding: 32px 16px; overflow-x: auto; }
 
-  /* ——— Tooltip ——— */
-  .tooltip {
-    position: fixed;
-    pointer-events: none;
-    background: var(--jfa-gray);
-    border: 2px solid var(--jfa-turquoise);
-    color: var(--jfa-white);
-    padding: 12px 16px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    max-width: 280px;
-    z-index: 100;
-    opacity: 0;
-    transition: opacity 0.15s;
-    border-radius: 0;
-    line-height: 1.6;
-  }
-  .tooltip.visible { opacity: 1; }
+.org-chart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 1100px;
+}
+
+/* Each tier is a horizontal row */
+.tier {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.tier-label {
+  font-family: 'Norwester', Impact, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #C0C4CC;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.tier-spacer {
+  height: 48px;
+  position: relative;
+  width: 100%;
+}
+
+/* Co-leadership wrapper */
+.co-leader-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+}
+
+.co-leader-row::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: 20px; right: 20px; bottom: -2px;
+  border: 2px dashed var(--jfa-turquoise-mid);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.co-leader-badge {
+  font-family: 'Norwester', Impact, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--jfa-turquoise);
+  background: var(--jfa-turquoise-light);
+  padding: 3px 14px;
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.co-leader-divider {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 10px; align-self: stretch; z-index: 1;
+  font-size: 14px; font-weight: 700; color: var(--jfa-turquoise);
+}
+
+/* Manager grouping labels */
+.manager-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manager-group-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #AAA;
+  margin-bottom: 6px;
+}
+
+.manager-group-cards {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.group-separator {
+  width: 1px;
+  background: var(--jfa-border);
+  align-self: stretch;
+  margin: 0 12px;
+}
+
+/* Card styles */
+.card {
+  background: var(--jfa-card-bg);
+  border: 1px solid var(--jfa-border);
+  border-top: 4px solid var(--dept-leadership);
+  padding: 14px 18px;
+  width: 210px;
+  position: relative;
+  transition: all 0.2s ease;
+  cursor: default;
+  z-index: 1;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.card.highlight {
+  box-shadow: 0 0 0 3px var(--jfa-turquoise), 0 4px 16px rgba(0,141,185,0.25);
+}
+
+.card.dimmed { opacity: 0.25; }
+
+.card .name {
+  font-family: 'Norwester', Impact, sans-serif;
+  font-size: 15px; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--jfa-text);
+  margin-bottom: 2px;
+}
+
+.card .role {
+  font-size: 11px; color: var(--jfa-text-secondary);
+  margin-bottom: 6px; line-height: 1.3;
+}
+
+.card .pay { font-size: 13px; font-weight: 700; color: var(--jfa-text); }
+
+.card .pay-detail {
+  font-size: 10px; color: var(--jfa-text-secondary); margin-top: 1px;
+}
+
+.card .badge {
+  display: inline-block; font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 2px 6px; margin-top: 5px;
+}
+
+.badge.w2 { background: var(--jfa-turquoise-light); color: var(--jfa-turquoise); }
+.badge.contractor { background: #FFF3E0; color: #D4760A; }
+.badge.open { background: #FFF9C4; color: #9E8600; }
+.badge.remote { background: #EDE7F6; color: #6B5B95; }
+
+.card.dept-leadership { border-top-color: var(--dept-leadership); }
+.card.dept-education { border-top-color: var(--dept-education); }
+.card.dept-operations { border-top-color: var(--dept-operations); }
+.card.dept-fb { border-top-color: var(--dept-fb); }
+.card.dept-finance { border-top-color: var(--dept-finance); }
+.card.dept-sound { border-top-color: var(--dept-sound); }
+
+.card.board-card {
+  background: var(--jfa-gray); color: var(--jfa-white);
+  border-top: 4px solid var(--jfa-turquoise);
+  text-align: center; width: 260px;
+}
+
+.card.board-card .name { color: var(--jfa-white); }
+.card.board-card .role { color: rgba(255,255,255,0.7); }
+
+/* SVG connector lines */
+.connectors-svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.connectors-svg line {
+  stroke: var(--jfa-border);
+  stroke-width: 2;
+}
+
+.connectors-svg line.leader-line {
+  stroke: var(--jfa-turquoise-mid);
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+}
+
+/* Print */
+@media print {
+  .header-controls, .search-box, .toggle-btn, .legend, .no-print { display: none !important; }
+  body { background: white; }
+  .header { background: white; color: black; border-bottom: 3px solid var(--jfa-turquoise); }
+  .logo { color: var(--jfa-turquoise); }
+  .logo span { color: black; }
+  .header h1 { color: black; }
+  .summary-bar { border-bottom: 1px solid #ccc; }
+  .card { box-shadow: none; border: 1px solid #ccc; }
+  .card:hover { transform: none; box-shadow: none; }
+  .co-leader-row::before { border-color: #ccc; }
+}
+
+@media (max-width: 768px) {
+  .header { padding: 16px; }
+  .summary-bar { padding: 12px 16px; gap: 16px; }
+  .org-container { padding: 16px 8px; }
+}
 </style>
 </head>
 <body>
 
-<header>
+<!-- Header -->
+<div class="header">
   <div class="header-left">
-    <span class="logo-text">Jazz Forum Arts</span>
-    <span class="subtitle">Tarrytown, NY</span>
+    <div class="logo">Jazz Forum Arts<span>Tarrytown, NY</span></div>
+    <h1>Organizational Chart</h1>
   </div>
-  <div class="toggle-wrap">
-    <span class="toggle-label active" id="labelBase">Base</span>
-    <div class="toggle-switch" id="costToggle" onclick="toggleView()">
-      <div class="knob"></div>
+  <div class="header-controls">
+    <div class="search-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search name or role..." oninput="handleSearch(this.value)" />
     </div>
-    <span class="toggle-label" id="labelLoaded">Fully Loaded</span>
+    <button class="toggle-btn active" id="btnBase" onclick="toggleView('base')">Base Pay</button>
+    <button class="toggle-btn" id="btnLoaded" onclick="toggleView('loaded')">Fully Loaded</button>
+    <button class="toggle-btn no-print" onclick="window.print()">Print</button>
   </div>
-</header>
-
-<h1>Organizational Chart</h1>
-
-<div class="chart-wrapper">
-  <svg class="org-chart" id="orgSvg" xmlns="http://www.w3.org/2000/svg"></svg>
 </div>
 
-<div class="payroll-footer">
-  <div class="label">Total Annual Payroll</div>
-  <div class="amount" id="footerAmount">$851,860</div>
-  <div class="budget" id="footerBudget">of $1,000,000 budget cap · 85.2% utilized · $148,140 remaining</div>
-  <div class="bar-track"><div class="bar-fill" id="footerBar"></div></div>
-  <div class="breakdown" id="footerBreakdown"></div>
+<!-- Summary Bar -->
+<div class="summary-bar" id="summaryBar"></div>
+
+<!-- Legend -->
+<div class="legend">
+  <span style="font-size:11px;font-weight:700;color:var(--jfa-text);text-transform:uppercase;letter-spacing:1px;">Departments:</span>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-leadership)"></div> Leadership</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-education)"></div> Education</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-sound)"></div> Sound</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-operations)"></div> Operations</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-fb)"></div> Food & Beverage</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-finance)"></div> Finance</div>
 </div>
 
-<div class="tooltip" id="tooltip"></div>
+<!-- Org Chart -->
+<div class="org-container">
+  <div class="org-chart" id="orgChart"></div>
+</div>
 
 <script>
-(function () {
-  const TURQUOISE = '#008DB9';
-  const GRAY      = '#2D2D2D';
-  const OPEN_CLR  = '#C75000';
-  const WHITE     = '#FFFFFF';
-  const LINE_CLR  = '#555555';
+const EMPLOYER_TAX_RATE = 0.0965;
 
-  /* ——————————————————————————————————
-     DATA — base + loaded costs
-  —————————————————————————————————— */
-  const nodes = [
-    { id: 'board', name: 'Board of Directors', title: '', salary: '', loadedSalary: '', color: TURQUOISE, textColor: WHITE, parent: null, note: 'Governing body', type: '' },
-    { id: 'ed', name: 'Darrian', title: 'Executive Director', salary: '$120,000', loadedSalary: '$131,514', color: TURQUOISE, textColor: WHITE, parent: 'board', note: 'W-2 · FICA $9,180 · FUTA $42 · SUTA $492 · WC $1,800', type: 'W-2', baseCost: 120000, loadedCost: 131514 },
-    { id: 'coo', name: 'Clara', title: 'Chief Operating Officer', salary: '$120,000', loadedSalary: '$131,514', color: TURQUOISE, textColor: WHITE, parent: 'board', note: 'W-2 · FICA $9,180 · FUTA $42 · SUTA $492 · WC $1,800', type: 'W-2', baseCost: 120000, loadedCost: 131514 },
-    { id: 'dev', name: 'Open Hire', title: 'Development Manager', salary: '$85,000', loadedSalary: '$93,311', color: OPEN_CLR, textColor: WHITE, parent: 'ed', note: 'Position unfilled · W-2 · FICA $6,502 · FUTA $42 · SUTA $492 · WC $1,275', type: 'W-2', baseCost: 85000, loadedCost: 93311 },
-    { id: 'edu', name: 'Giulia', title: 'Education & Programs Coord.', salary: '$62,400', loadedSalary: '$68,644', color: GRAY, textColor: WHITE, parent: 'ed', note: 'W-2 · FICA $4,774 · FUTA $42 · SUTA $492 · WC $936', type: 'W-2', baseCost: 62400, loadedCost: 68644 },
-    { id: 'cam', name: 'Cam', title: 'Sound Engineer', salary: '$17,600', loadedSalary: '$17,600', color: GRAY, textColor: WHITE, parent: 'ed', note: '1099 Contractor · No employer taxes', type: '1099', baseCost: 17600, loadedCost: 17600 },
-    { id: 'johne', name: 'John', title: 'Sound Engineer', salary: '$8,800', loadedSalary: '$8,800', color: GRAY, textColor: WHITE, parent: 'ed', note: '1099 Contractor · No employer taxes', type: '1099', baseCost: 8800, loadedCost: 8800 },
-    { id: 'cfo', name: 'External', title: 'Fractional CFO', salary: '$78,000', loadedSalary: '$78,000', color: GRAY, textColor: WHITE, parent: 'ed', note: '1099 Contractor · No employer taxes', type: '1099', baseCost: 78000, loadedCost: 78000 },
-    { id: 'neal', name: 'Neal', title: 'Education Staff', salary: '$48,000', loadedSalary: '$48,000', color: GRAY, textColor: WHITE, parent: 'edu', note: '1099 Contractor · No employer taxes', type: '1099', baseCost: 48000, loadedCost: 48000 },
-    { id: 'boyce', name: 'Boyce', title: 'Education Staff', salary: '$48,000', loadedSalary: '$48,000', color: GRAY, textColor: WHITE, parent: 'edu', note: '1099 Contractor · No employer taxes', type: '1099', baseCost: 48000, loadedCost: 48000 },
-    { id: 'ops', name: 'Isak', title: 'Ops & Marketing Manager', salary: '$102,000', loadedSalary: '$102,000', color: GRAY, textColor: WHITE, parent: 'coo', note: 'W-2 · Remote Amsterdam · $102K all-in (taxes included)', type: 'W-2 All-in', baseCost: 102000, loadedCost: 102000 },
-    { id: 'chef', name: 'John', title: 'Chef', salary: '$85,100', loadedSalary: '$93,420', color: GRAY, textColor: WHITE, parent: 'coo', note: 'W-2 · Incl. $2K bonus · FICA $6,510 · FUTA $42 · SUTA $492 · WC $1,276', type: 'W-2', baseCost: 85100, loadedCost: 93420 },
-    { id: 'foh', name: 'Aerial', title: 'FOH Manager', salary: '$76,960', loadedSalary: '$84,535', color: GRAY, textColor: WHITE, parent: 'coo', note: 'W-2 · FICA $5,887 · FUTA $42 · SUTA $492 · WC $1,154', type: 'W-2', baseCost: 76960, loadedCost: 84535 },
-    { id: 'bohstaff', name: 'BOH Staff', title: 'Kitchen · Prep · Dishwashers', salary: '', loadedSalary: '', color: GRAY, textColor: WHITE, parent: 'chef', note: 'Variable / hourly', type: '', baseCost: 0, loadedCost: 0 },
-    { id: 'fohstaff', name: 'FOH Staff', title: 'Waiters · Bussers · Bartenders', salary: '', loadedSalary: '', color: GRAY, textColor: WHITE, parent: 'foh', note: 'Variable / hourly', type: '', baseCost: 0, loadedCost: 0 },
-  ];
+const people = [
+  { id: 'board', name: 'Board of Directors', role: 'Governing Body', dept: 'leadership', base: 0, type: 'board', reportsTo: null, tier: 0 },
 
-  const BASE_TOTAL = 851860;
-  const LOADED_TOTAL = 905338;
-  const BUDGET = 1000000;
-  const EMPLOYER_TAX_TOTAL = LOADED_TOTAL - BASE_TOTAL;
+  { id: 'darrian', name: 'Darrian', role: 'Executive Director', dept: 'leadership', base: 120000, type: 'w2', reportsTo: 'board', tier: 1 },
+  { id: 'clara', name: 'Clara', role: 'Chief Operating Officer', dept: 'leadership', base: 120000, type: 'w2', reportsTo: 'board', tier: 1 },
 
-  /* ——————————————————————————————————
-     STATE
-  —————————————————————————————————— */
-  let showLoaded = false;
+  // Tier 2 — Managers (report to Darrian)
+  { id: 'giulia', name: 'Giulia', role: 'Education & Programs Coordinator', dept: 'education', base: 62400, type: 'w2', reportsTo: 'darrian', tier: 2 },
+  { id: 'dev_mgr', name: 'Open Hire', role: 'Development Manager', dept: 'leadership', base: 85000, type: 'open', reportsTo: 'darrian', tier: 2 },
+  { id: 'cfo', name: 'Open Hire', role: 'Fractional CFO', dept: 'finance', base: 78000, type: 'open', reportsTo: 'darrian', tier: 2 },
 
-  /* ——————————————————————————————————
-     LAYOUT
-  —————————————————————————————————— */
-  const BOX_W = 186, BOX_H = 84, H_GAP = 28, V_GAP = 60;
-  const BOARD_W = 220, BOARD_H = 52;
-  const LEADER_W = 204, LEADER_H = 84;
+  // Tier 2 — Managers (report to Clara)
+  { id: 'isak', name: 'Isak', role: 'Operations & Marketing Manager', dept: 'operations', base: 102000, type: 'w2', reportsTo: 'clara', tier: 2, remote: 'Amsterdam', payNote: 'All-in (Remote)' },
+  { id: 'john_chef', name: 'John', role: 'Chef', dept: 'fb', base: 85100, type: 'w2', reportsTo: 'clara', tier: 2 },
+  { id: 'aerial', name: 'Aerial', role: 'FOH Manager', dept: 'fb', base: 76960, type: 'w2', reportsTo: 'clara', tier: 2 },
 
-  const childrenOf = {};
-  nodes.forEach(n => { childrenOf[n.id] = []; });
-  nodes.forEach(n => { if (n.parent) childrenOf[n.parent].push(n.id); });
+  // Tier 3 — Staff
+  { id: 'cam', name: 'Cam', role: 'Sound Engineer', dept: 'sound', base: 46800, type: '1099', reportsTo: 'darrian', tier: 3, payNote: '$900/week' },
+  { id: 'neal', name: 'Neal', role: 'Education Staff', dept: 'education', base: 48000, type: '1099', reportsTo: 'giulia', tier: 3 },
+  { id: 'boyce', name: 'Boyce', role: 'Education Staff', dept: 'education', base: 48000, type: '1099', reportsTo: 'giulia', tier: 3 },
+  { id: 'boh', name: 'BOH Staff', role: 'Kitchen, Prep, Dishwashers', dept: 'fb', base: 0, type: 'hourly', reportsTo: 'john_chef', tier: 3, payNote: 'Variable / Hourly' },
+  { id: 'foh', name: 'FOH Staff', role: 'Waiters, Bussers, Bartenders', dept: 'fb', base: 0, type: 'hourly', reportsTo: 'aerial', tier: 3, payNote: 'Variable / Hourly' },
+];
 
-  const nodeMap = {};
-  nodes.forEach(n => { nodeMap[n.id] = n; });
+let viewMode = 'base';
 
-  function subtreeWidth(id) {
-    const kids = childrenOf[id];
-    if (kids.length === 0) return BOX_W;
-    let total = 0;
-    kids.forEach((k, i) => {
-      total += subtreeWidth(k);
-      if (i < kids.length - 1) total += H_GAP;
-    });
-    return Math.max(BOX_W, total);
+function getFullyLoaded(p) {
+  if (p.type === 'w2' && p.id !== 'isak') return Math.round(p.base * (1 + EMPLOYER_TAX_RATE));
+  return p.base;
+}
+
+function fmt(n) { return n === 0 ? '—' : '$' + n.toLocaleString('en-US'); }
+
+function renderCardHTML(p) {
+  const pay = viewMode === 'loaded' ? getFullyLoaded(p) : p.base;
+
+  let badgeHTML = '';
+  if (p.type === 'w2') badgeHTML = '<span class="badge w2">W-2</span>';
+  else if (p.type === '1099') badgeHTML = '<span class="badge contractor">1099</span>';
+  else if (p.type === 'open') badgeHTML = '<span class="badge open">Open Position</span>';
+  if (p.remote) badgeHTML += ' <span class="badge remote">Remote</span>';
+
+  let payHTML = '';
+  if (p.type === 'board') {
+    payHTML = '';
+  } else if (p.payNote && p.base > 0) {
+    payHTML = `<div class="pay">${fmt(pay)}<span style="font-size:10px;font-weight:500;color:var(--jfa-text-secondary)"> /yr</span></div><div class="pay-detail">${p.payNote}</div>`;
+  } else if (p.payNote) {
+    payHTML = `<div class="pay-detail">${p.payNote}</div>`;
+  } else if (pay > 0) {
+    payHTML = `<div class="pay">${fmt(pay)}<span style="font-size:10px;font-weight:500;color:var(--jfa-text-secondary)"> /yr</span></div>`;
+    if (viewMode === 'loaded' && p.type === 'w2' && p.id !== 'isak') {
+      payHTML += `<div class="pay-detail">Base: ${fmt(p.base)}</div>`;
+    }
   }
 
-  const pos = {};
+  const isBoard = p.type === 'board';
+  const cardClass = isBoard ? 'card board-card' : `card dept-${p.dept}`;
 
-  function layoutChildren(parentId, cx, y) {
-    const kids = childrenOf[parentId];
-    if (kids.length === 0) return;
-    let totalW = 0;
-    kids.forEach((k, i) => {
-      totalW += subtreeWidth(k);
-      if (i < kids.length - 1) totalW += H_GAP;
-    });
-    let startX = cx - totalW / 2;
-    kids.forEach(k => {
-      const sw = subtreeWidth(k);
-      const childCx = startX + sw / 2;
-      const w = BOX_W, h = BOX_H;
-      pos[k] = { x: childCx - w / 2, y, w, h, cx: childCx, cy: y + h / 2 };
-      layoutChildren(k, childCx, y + h + V_GAP);
-      startX += sw + H_GAP;
-    });
+  return `<div class="${cardClass}" data-id="${p.id}" data-name="${p.name.toLowerCase()}" data-role="${p.role.toLowerCase()}">
+    <div class="name">${p.name}</div>
+    <div class="role">${p.role}</div>
+    ${payHTML}
+    ${badgeHTML}
+  </div>`;
+}
+
+function renderChart() {
+  const board = people.find(p => p.tier === 0);
+  const leaders = people.filter(p => p.tier === 1);
+  const darrian = leaders.find(p => p.id === 'darrian');
+  const clara = leaders.find(p => p.id === 'clara');
+
+  const t2Darrian = people.filter(p => p.tier === 2 && p.reportsTo === 'darrian');
+  const t2Clara = people.filter(p => p.tier === 2 && p.reportsTo === 'clara');
+
+  const t3 = people.filter(p => p.tier === 3);
+
+  // Group tier 3 by manager for visual grouping
+  const t3Groups = {};
+  t3.forEach(p => {
+    const mgr = p.reportsTo;
+    if (!t3Groups[mgr]) t3Groups[mgr] = [];
+    t3Groups[mgr].push(p);
+  });
+
+  let html = '';
+
+  // Tier 0 — Board
+  html += `<div class="tier-label">Governance</div>`;
+  html += `<div class="tier">${renderCardHTML(board)}</div>`;
+  html += `<div class="tier-spacer"></div>`;
+
+  // Tier 1 — Co-Leadership
+  html += `<div class="tier-label">Co-Leadership</div>`;
+  html += `<div class="tier">
+    <div class="co-leader-row">
+      <div class="co-leader-badge">Co-Leaders</div>
+      ${renderCardHTML(darrian)}
+      <div class="co-leader-divider">&amp;</div>
+      ${renderCardHTML(clara)}
+    </div>
+  </div>`;
+  html += `<div class="tier-spacer"></div>`;
+
+  // Tier 2 — Managers
+  html += `<div class="tier-label">Managers</div>`;
+  html += `<div class="tier">
+    <div class="manager-group">
+      <div class="manager-group-label">Reports to Darrian</div>
+      <div class="manager-group-cards">
+        ${t2Darrian.map(p => renderCardHTML(p)).join('')}
+      </div>
+    </div>
+    <div class="group-separator"></div>
+    <div class="manager-group">
+      <div class="manager-group-label">Reports to Clara</div>
+      <div class="manager-group-cards">
+        ${t2Clara.map(p => renderCardHTML(p)).join('')}
+      </div>
+    </div>
+  </div>`;
+  html += `<div class="tier-spacer"></div>`;
+
+  // Tier 3 — Staff
+  html += `<div class="tier-label">Staff</div>`;
+  const t3Entries = [];
+  // Order: Cam (reports to Darrian), Neal & Boyce (reports to Giulia), BOH (John), FOH (Aerial)
+  const t3Order = ['darrian', 'giulia', 'john_chef', 'aerial'];
+  t3Order.forEach(mgr => {
+    if (t3Groups[mgr]) {
+      const mgrPerson = people.find(p => p.id === mgr);
+      t3Entries.push({ mgr: mgrPerson.name, people: t3Groups[mgr] });
+    }
+  });
+
+  html += `<div class="tier">`;
+  t3Entries.forEach((group, i) => {
+    if (i > 0) html += `<div class="group-separator"></div>`;
+    html += `<div class="manager-group">
+      <div class="manager-group-label">Reports to ${group.mgr}</div>
+      <div class="manager-group-cards">
+        ${group.people.map(p => renderCardHTML(p)).join('')}
+      </div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  document.getElementById('orgChart').innerHTML = html;
+
+  // Draw connector lines after layout
+  requestAnimationFrame(() => drawConnectors());
+
+  updateSummary();
+}
+
+function drawConnectors() {
+  // Remove old SVG
+  const old = document.querySelector('.connectors-svg');
+  if (old) old.remove();
+
+  const chart = document.getElementById('orgChart');
+  const chartRect = chart.getBoundingClientRect();
+
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.classList.add('connectors-svg');
+  svg.setAttribute('width', chart.scrollWidth);
+  svg.setAttribute('height', chart.scrollHeight);
+  svg.style.position = 'absolute';
+  svg.style.top = '0';
+  svg.style.left = '0';
+
+  // Draw lines from each person to their manager
+  people.forEach(p => {
+    if (!p.reportsTo) return;
+
+    const childEl = chart.querySelector(`[data-id="${p.id}"]`);
+    const parentEl = chart.querySelector(`[data-id="${p.reportsTo}"]`);
+    if (!childEl || !parentEl) return;
+
+    const cRect = childEl.getBoundingClientRect();
+    const pRect = parentEl.getBoundingClientRect();
+
+    const x1 = pRect.left + pRect.width / 2 - chartRect.left;
+    const y1 = pRect.bottom - chartRect.top;
+    const x2 = cRect.left + cRect.width / 2 - chartRect.left;
+    const y2 = cRect.top - chartRect.top;
+
+    // Draw elbow connector: down from parent, then horizontal, then down to child
+    const midY = y1 + (y2 - y1) / 2;
+
+    const isLeaderLine = p.tier === 1;
+    const cls = isLeaderLine ? 'leader-line' : '';
+
+    // Vertical from parent down to midpoint
+    const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line1.setAttribute('x1', x1); line1.setAttribute('y1', y1);
+    line1.setAttribute('x2', x1); line1.setAttribute('y2', midY);
+    if (cls) line1.classList.add(cls);
+    svg.appendChild(line1);
+
+    // Horizontal at midpoint
+    const line2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line2.setAttribute('x1', x1); line2.setAttribute('y1', midY);
+    line2.setAttribute('x2', x2); line2.setAttribute('y2', midY);
+    if (cls) line2.classList.add(cls);
+    svg.appendChild(line2);
+
+    // Vertical from midpoint down to child
+    const line3 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line3.setAttribute('x1', x2); line3.setAttribute('y1', midY);
+    line3.setAttribute('x2', x2); line3.setAttribute('y2', y2);
+    if (cls) line3.classList.add(cls);
+    svg.appendChild(line3);
+  });
+
+  chart.appendChild(svg);
+}
+
+function updateSummary() {
+  const w2 = people.filter(p => p.type === 'w2');
+  const contractors = people.filter(p => p.type === '1099');
+  const totalBase = people.reduce((sum, p) => sum + p.base, 0);
+  const totalLoaded = people.reduce((sum, p) => sum + getFullyLoaded(p), 0);
+  const display = viewMode === 'loaded' ? totalLoaded : totalBase;
+  const budgetCap = 1000000;
+  const utilization = ((display / budgetCap) * 100).toFixed(1);
+  const employerTax = totalLoaded - totalBase;
+
+  document.getElementById('summaryBar').innerHTML = `
+    <div class="summary-stat"><span class="label">W-2 Employees</span><span class="value">${w2.length}</span></div>
+    <div class="summary-stat"><span class="label">1099 Contractors</span><span class="value">${contractors.length}</span></div>
+    <div class="summary-stat"><span class="label">${viewMode === 'loaded' ? 'Total Fully Loaded' : 'Total Base Payroll'}</span><span class="value accent">${fmt(display)}</span></div>
+    <div class="summary-stat"><span class="label">Employer Tax Estimate</span><span class="value">${fmt(Math.round(employerTax))}</span></div>
+    <div class="summary-stat"><span class="label">Budget Cap</span><span class="value">${fmt(budgetCap)}</span></div>
+    <div class="summary-stat budget-bar-wrapper">
+      <span class="label">Utilization: ${utilization}%</span>
+      <div class="budget-bar-track">
+        <div class="budget-bar-fill" style="width:${Math.min(utilization, 100)}%;${parseFloat(utilization) > 95 ? 'background:#D4760A;' : ''}${parseFloat(utilization) > 100 ? 'background:#B5395B;' : ''}"></div>
+      </div>
+    </div>
+  `;
+}
+
+function toggleView(mode) {
+  viewMode = mode;
+  document.getElementById('btnBase').classList.toggle('active', mode === 'base');
+  document.getElementById('btnLoaded').classList.toggle('active', mode === 'loaded');
+  renderChart();
+}
+
+function handleSearch(query) {
+  const cards = document.querySelectorAll('.card[data-id]');
+  if (!query.trim()) {
+    cards.forEach(c => c.classList.remove('highlight', 'dimmed'));
+    return;
   }
-
-  const edSubW = subtreeWidth('ed');
-  const cooSubW = subtreeWidth('coo');
-  const canvasCx = Math.max((edSubW + H_GAP + cooSubW) / 2 + 40, 600);
-
-  pos['board'] = { x: canvasCx - BOARD_W / 2, y: 20, w: BOARD_W, h: BOARD_H, cx: canvasCx, cy: 20 + BOARD_H / 2 };
-
-  const leaderY = 20 + BOARD_H + V_GAP;
-  const edCx = canvasCx - (edSubW / 2 + H_GAP / 2 + cooSubW / 2) + edSubW / 2;
-  const cooCx = edCx + edSubW / 2 + H_GAP + cooSubW / 2;
-
-  pos['ed'] = { x: edCx - LEADER_W / 2, y: leaderY, w: LEADER_W, h: LEADER_H, cx: edCx, cy: leaderY + LEADER_H / 2 };
-  pos['coo'] = { x: cooCx - LEADER_W / 2, y: leaderY, w: LEADER_W, h: LEADER_H, cx: cooCx, cy: leaderY + LEADER_H / 2 };
-
-  layoutChildren('ed', edCx, leaderY + LEADER_H + V_GAP);
-  layoutChildren('coo', cooCx, leaderY + LEADER_H + V_GAP);
-
-  /* ——————————————————————————————————
-     RENDER
-  —————————————————————————————————— */
-  let minX = Infinity, maxX = -Infinity, maxY = -Infinity;
-  Object.values(pos).forEach(p => {
-    if (p.x < minX) minX = p.x;
-    if (p.x + p.w > maxX) maxX = p.x + p.w;
-    if (p.y + p.h > maxY) maxY = p.y + p.h;
-  });
-  const PAD = 30;
-  const svgW = maxX - minX + PAD * 2;
-  const svgH = maxY + PAD * 2 + 70; // extra for legend
-
-  const svg = document.getElementById('orgSvg');
-  svg.setAttribute('width', svgW);
-  svg.setAttribute('height', svgH);
-  svg.setAttribute('viewBox', `${minX - PAD} ${-PAD} ${svgW} ${svgH}`);
-
-  function svgEl(tag, attrs) {
-    const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
-    for (const [k, v] of Object.entries(attrs || {})) el.setAttribute(k, v);
-    return el;
-  }
-
-  // Connector lines
-  const linesG = svgEl('g', {});
-  svg.appendChild(linesG);
-  nodes.forEach(n => {
-    if (!n.parent) return;
-    const p = pos[n.parent], c = pos[n.id];
-    if (!p || !c) return;
-    const midY = p.y + p.h + (c.y - p.y - p.h) / 2;
-    linesG.appendChild(svgEl('path', {
-      d: `M ${p.cx} ${p.y + p.h} L ${p.cx} ${midY} L ${c.cx} ${midY} L ${c.cx} ${c.y}`,
-      stroke: LINE_CLR, 'stroke-width': '2', fill: 'none'
-    }));
-  });
-
-  // Boxes
-  const boxesG = svgEl('g', {});
-  svg.appendChild(boxesG);
-  const tooltip = document.getElementById('tooltip');
-
-  // Store salary text elements for toggling
-  const salaryTexts = {};
-
-  nodes.forEach(n => {
-    const p = pos[n.id];
-    if (!p) return;
-    const g = svgEl('g', { 'data-id': n.id, style: 'cursor:pointer' });
-
-    // Shadow
-    g.appendChild(svgEl('rect', { x: p.x + 3, y: p.y + 3, width: p.w, height: p.h, fill: 'rgba(0,0,0,0.35)', rx: 0 }));
-
-    // Box
-    let stroke = 'none', strokeW = '0';
-    if (n.id === 'dev') { stroke = OPEN_CLR; strokeW = '2'; }
-    g.appendChild(svgEl('rect', { x: p.x, y: p.y, width: p.w, height: p.h, fill: n.color, rx: 0, stroke, 'stroke-width': strokeW }));
-
-    // Diagonal hatch for open hire
-    if (n.id === 'dev') {
-      const defs = svgEl('defs', {});
-      const pat = svgEl('pattern', { id: 'diag', width: 8, height: 8, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' });
-      pat.appendChild(svgEl('line', { x1: 0, y1: 0, x2: 0, y2: 8, stroke: 'rgba(255,255,255,0.06)', 'stroke-width': 4 }));
-      defs.appendChild(pat);
-      g.appendChild(defs);
-      g.appendChild(svgEl('rect', { x: p.x, y: p.y, width: p.w, height: p.h, fill: 'url(#diag)', rx: 0 }));
-    }
-
-    // W-2 / 1099 badge
-    if (n.type && n.id !== 'board') {
-      const badgeW = n.type.length * 7 + 12;
-      const badgeColor = n.type === '1099' ? 'rgba(255,255,255,0.15)' : 'rgba(0,141,185,0.35)';
-      g.appendChild(svgEl('rect', { x: p.x + p.w - badgeW - 4, y: p.y + 4, width: badgeW, height: 16, fill: badgeColor, rx: 0 }));
-      const bt = svgEl('text', {
-        x: p.x + p.w - badgeW / 2 - 4, y: p.y + 15,
-        'text-anchor': 'middle', fill: WHITE, 'font-family': "'Montserrat', sans-serif",
-        'font-size': '9', 'font-weight': '700', 'letter-spacing': '0.5px'
-      });
-      bt.textContent = n.type;
-      g.appendChild(bt);
-    }
-
-    // Text lines
-    const isBoard = n.id === 'board';
-    const fontSize = isBoard ? 14 : 12;
-    const lineH = isBoard ? 18 : 16;
-    const lines = [];
-    if (n.name) lines.push({ text: n.name, bold: true });
-    if (n.title) lines.push({ text: n.title, bold: false });
-
-    const hasSalary = !!n.salary;
-    const totalLines = lines.length + (hasSalary ? 1 : 0);
-    const totalTextH = totalLines * lineH;
-    let textY = p.y + (p.h - totalTextH) / 2 + lineH * 0.75;
-
-    lines.forEach(l => {
-      const txt = svgEl('text', {
-        x: p.cx, y: textY, 'text-anchor': 'middle', fill: n.textColor,
-        'font-family': l.bold ? "'Norwester', Impact, 'Arial Black', sans-serif" : "'Montserrat', sans-serif",
-        'font-size': l.bold ? fontSize + 1 : fontSize - 1,
-        'font-weight': l.bold ? 'normal' : '500',
-        'text-transform': l.bold ? 'uppercase' : 'none',
-        'letter-spacing': l.bold ? '0.5px' : '0'
-      });
-      txt.textContent = l.text;
-      g.appendChild(txt);
-      textY += lineH;
-    });
-
-    // Salary text (swappable)
-    if (hasSalary) {
-      const salTxt = svgEl('text', {
-        x: p.cx, y: textY, 'text-anchor': 'middle', fill: n.textColor,
-        'font-family': "'Montserrat', sans-serif", 'font-size': fontSize - 1,
-        'font-weight': '600', opacity: '0.9'
-      });
-      salTxt.textContent = n.salary;
-      g.appendChild(salTxt);
-      salaryTexts[n.id] = { el: salTxt, base: n.salary, loaded: n.loadedSalary };
-    }
-
-    // Hover
-    g.addEventListener('mouseenter', (e) => {
-      const nd = nodeMap[n.id];
-      let html = `<strong style="color:${TURQUOISE};font-size:14px">${nd.name}</strong>`;
-      if (nd.title) html += `<br>${nd.title}`;
-      if (nd.type) html += `<br><span style="color:rgba(255,255,255,0.5)">${nd.type}</span>`;
-      if (nd.salary) {
-        html += `<br>Base salary: ${nd.salary}`;
-        if (nd.loadedSalary && nd.loadedSalary !== nd.salary) {
-          html += `<br>Fully loaded: <strong style="color:${TURQUOISE}">${nd.loadedSalary}</strong>`;
-        }
-      }
-      if (nd.note) html += `<br><em style="color:rgba(255,255,255,0.55);font-size:11px">${nd.note}</em>`;
-      const kids = childrenOf[n.id];
-      if (kids.length) html += `<br>Direct reports: ${kids.length}`;
-      tooltip.innerHTML = html;
-      tooltip.classList.add('visible');
-    });
-    g.addEventListener('mousemove', (e) => {
-      tooltip.style.left = (e.clientX + 14) + 'px';
-      tooltip.style.top = (e.clientY + 14) + 'px';
-    });
-    g.addEventListener('mouseleave', () => { tooltip.classList.remove('visible'); });
-
-    boxesG.appendChild(g);
-  });
-
-  // Legend
-  const legY = maxY + 20;
-  const legX = minX;
-  const legG = svgEl('g', {});
-  svg.appendChild(legG);
-
-  const legendItems = [
-    { color: TURQUOISE, label: 'Board / Leadership' },
-    { color: OPEN_CLR, label: 'Open Position' },
-    { color: GRAY, label: 'Staff' },
-  ];
-
-  legendItems.forEach((item, i) => {
-    const xOff = i * 180;
-    legG.appendChild(svgEl('rect', { x: legX + xOff, y: legY, width: 14, height: 14, fill: item.color, rx: 0 }));
-    const t = svgEl('text', { x: legX + xOff + 22, y: legY + 12, fill: WHITE, 'font-family': "'Montserrat', sans-serif", 'font-size': '12', 'font-weight': '500' });
-    t.textContent = item.label;
-    legG.appendChild(t);
-  });
-
-  /* ——————————————————————————————————
-     TOGGLE BASE / LOADED
-  —————————————————————————————————— */
-  function updateView() {
-    const total = showLoaded ? LOADED_TOTAL : BASE_TOTAL;
-    const pct = (total / BUDGET * 100).toFixed(1);
-    const remaining = BUDGET - total;
-
-    // Update salary texts on boxes
-    for (const [id, obj] of Object.entries(salaryTexts)) {
-      obj.el.textContent = showLoaded ? obj.loaded : obj.base;
-    }
-
-    // Update footer
-    document.getElementById('footerAmount').textContent = '$' + total.toLocaleString();
-    document.getElementById('footerBudget').textContent =
-      `of $1,000,000 budget cap · ${pct}% utilized · $${remaining.toLocaleString()} remaining`;
-    document.getElementById('footerBar').style.width = pct + '%';
-
-    // Breakdown
-    const bk = document.getElementById('footerBreakdown');
-    if (showLoaded) {
-      bk.innerHTML =
-        `<span class="item"><strong>Base salaries:</strong> $${BASE_TOTAL.toLocaleString()}</span>` +
-        `<span class="item"><strong>Employer taxes:</strong> $${EMPLOYER_TAX_TOTAL.toLocaleString()}</span>` +
-        `<span class="item"><strong>W-2 employees:</strong> 7</span>` +
-        `<span class="item"><strong>1099 contractors:</strong> 5</span>`;
+  const q = query.toLowerCase();
+  let hasMatch = false;
+  cards.forEach(c => {
+    const name = c.getAttribute('data-name') || '';
+    const role = c.getAttribute('data-role') || '';
+    if (name.includes(q) || role.includes(q)) {
+      c.classList.add('highlight');
+      c.classList.remove('dimmed');
+      hasMatch = true;
     } else {
-      bk.innerHTML =
-        `<span class="item"><strong>W-2 employees:</strong> 7</span>` +
-        `<span class="item"><strong>1099 contractors:</strong> 5</span>`;
+      c.classList.remove('highlight');
+      c.classList.add('dimmed');
     }
+  });
+  if (!hasMatch) cards.forEach(c => c.classList.remove('dimmed'));
+}
 
-    // Toggle UI
-    const tog = document.getElementById('costToggle');
-    const lblBase = document.getElementById('labelBase');
-    const lblLoaded = document.getElementById('labelLoaded');
-    if (showLoaded) {
-      tog.classList.add('on');
-      lblBase.classList.remove('active');
-      lblLoaded.classList.add('active');
-    } else {
-      tog.classList.remove('on');
-      lblBase.classList.add('active');
-      lblLoaded.classList.remove('active');
-    }
-  }
+// Redraw connectors on resize
+window.addEventListener('resize', () => requestAnimationFrame(drawConnectors));
 
-  window.toggleView = function () {
-    showLoaded = !showLoaded;
-    updateView();
-  };
-
-  // Initial render
-  updateView();
-})();
+renderChart();
 </script>
+
 </body>
 </html>
