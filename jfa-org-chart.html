@@ -26,7 +26,6 @@
   --jfa-text: #1A1A1A;
   --jfa-text-secondary: #555555;
   --jfa-border: #D9DDE3;
-
   --dept-leadership: #008DB9;
   --dept-education: #2E8B57;
   --dept-operations: #D4760A;
@@ -75,79 +74,44 @@ h1, h2, h3, h4 {
 }
 
 .logo span {
-  color: var(--jfa-white);
-  font-size: 12px;
-  display: block;
-  letter-spacing: 3px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  color: var(--jfa-white); font-size: 12px; display: block;
+  letter-spacing: 3px; font-family: 'Montserrat', sans-serif; font-weight: 600;
 }
 
 .header h1 { font-size: 20px; letter-spacing: 2px; font-weight: normal; }
-
-.header-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.header-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
 .search-box { position: relative; }
-
 .search-box input {
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 0;
-  color: var(--jfa-white);
-  padding: 8px 12px 8px 34px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 13px;
-  width: 220px;
-  outline: none;
-  transition: all 0.2s;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0; color: var(--jfa-white); padding: 8px 12px 8px 34px;
+  font-family: 'Montserrat', sans-serif; font-size: 13px; width: 200px; outline: none;
 }
-
 .search-box input::placeholder { color: rgba(255,255,255,0.5); }
-.search-box input:focus { border-color: var(--jfa-turquoise); background: rgba(255,255,255,0.18); }
+.search-box input:focus { border-color: var(--jfa-turquoise); }
+.search-box svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); opacity: 0.5; }
 
-.search-box svg {
-  position: absolute; left: 10px; top: 50%; transform: translateY(-50%); opacity: 0.5;
+.btn {
+  background: rgba(255,255,255,0.1); color: var(--jfa-white);
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 0;
+  padding: 8px 14px; font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px;
 }
-
-.toggle-btn {
-  background: rgba(255,255,255,0.1);
-  color: var(--jfa-white);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 0;
-  padding: 8px 16px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.2s;
-  letter-spacing: 0.5px;
-}
-
-.toggle-btn:hover { background: rgba(255,255,255,0.2); }
-.toggle-btn.active { background: var(--jfa-turquoise); border-color: var(--jfa-turquoise); }
+.btn:hover { background: rgba(255,255,255,0.2); }
+.btn.active { background: var(--jfa-turquoise); border-color: var(--jfa-turquoise); }
+.btn.accent { background: var(--jfa-turquoise); border-color: var(--jfa-turquoise); }
+.btn.accent:hover { background: #007a9e; }
 
 /* Summary bar */
 .summary-bar {
-  background: var(--jfa-white);
-  border-bottom: 1px solid var(--jfa-border);
-  padding: 14px 32px;
-  display: flex;
-  gap: 32px;
-  flex-wrap: wrap;
-  align-items: center;
+  background: var(--jfa-white); border-bottom: 1px solid var(--jfa-border);
+  padding: 14px 32px; display: flex; gap: 32px; flex-wrap: wrap; align-items: center;
 }
-
 .summary-stat { display: flex; flex-direction: column; }
-
-.summary-stat .label {
-  font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
-  color: var(--jfa-text-secondary); font-weight: 600;
-}
-
+.summary-stat .label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--jfa-text-secondary); font-weight: 600; }
 .summary-stat .value { font-size: 18px; font-weight: 700; color: var(--jfa-text); }
 .summary-stat .value.accent { color: var(--jfa-turquoise); }
-
 .budget-bar-wrapper { flex: 1; min-width: 200px; max-width: 350px; }
 .budget-bar-track { background: #E8EAED; height: 8px; width: 100%; }
 .budget-bar-fill { height: 100%; background: var(--jfa-turquoise); transition: width 0.5s ease; }
@@ -157,174 +121,63 @@ h1, h2, h3, h4 {
   padding: 12px 32px; display: flex; gap: 20px; flex-wrap: wrap;
   align-items: center; background: var(--jfa-white); border-bottom: 1px solid var(--jfa-border);
 }
-
-.legend-item {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 11px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.5px; color: var(--jfa-text-secondary);
-}
-
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--jfa-text-secondary); }
 .legend-dot { width: 10px; height: 10px; }
 
-/* === TIER-BASED ORG CHART === */
+/* Org chart */
 .org-container { padding: 32px 16px; overflow-x: auto; }
-
 .org-chart {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 1100px;
+  position: relative; display: flex; flex-direction: column;
+  align-items: center; min-width: 1500px;
 }
 
-/* Each tier is a horizontal row */
-.tier {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
+.tier { display: flex; justify-content: center; align-items: flex-start; gap: 20px; width: 100%; position: relative; z-index: 1; }
+.tier-label { font-family: 'Norwester', Impact, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #C0C4CC; margin-bottom: 8px; text-align: center; }
+.tier-spacer { height: 48px; width: 100%; }
 
-.tier-label {
-  font-family: 'Norwester', Impact, sans-serif;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #C0C4CC;
-  margin-bottom: 8px;
-  text-align: center;
-}
+.co-leader-row { display: flex; align-items: flex-start; justify-content: center; gap: 0; position: relative; }
+.co-leader-row::before { content: ''; position: absolute; top: -2px; left: 20px; right: 20px; bottom: -2px; border: 2px dashed var(--jfa-turquoise-mid); pointer-events: none; z-index: 0; }
+.co-leader-badge { font-family: 'Norwester', Impact, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: var(--jfa-turquoise); background: var(--jfa-turquoise-light); padding: 3px 14px; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); z-index: 2; white-space: nowrap; }
+.co-leader-divider { display: flex; align-items: center; justify-content: center; padding: 0 10px; align-self: stretch; z-index: 1; font-size: 14px; font-weight: 700; color: var(--jfa-turquoise); }
 
-.tier-spacer {
-  height: 48px;
-  position: relative;
-  width: 100%;
-}
+.manager-group { display: flex; flex-direction: column; align-items: center; }
+.manager-group-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #AAA; margin-bottom: 6px; }
+.manager-group-cards { display: flex; gap: 16px; justify-content: center; }
+.group-separator { width: 1px; background: var(--jfa-border); align-self: stretch; margin: 0 12px; }
 
-/* Co-leadership wrapper */
-.co-leader-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0;
-  position: relative;
-}
-
-.co-leader-row::before {
-  content: '';
-  position: absolute;
-  top: -2px; left: 20px; right: 20px; bottom: -2px;
-  border: 2px dashed var(--jfa-turquoise-mid);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.co-leader-badge {
-  font-family: 'Norwester', Impact, sans-serif;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  color: var(--jfa-turquoise);
-  background: var(--jfa-turquoise-light);
-  padding: 3px 14px;
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  white-space: nowrap;
-}
-
-.co-leader-divider {
-  display: flex; align-items: center; justify-content: center;
-  padding: 0 10px; align-self: stretch; z-index: 1;
-  font-size: 14px; font-weight: 700; color: var(--jfa-turquoise);
-}
-
-/* Manager grouping labels */
-.manager-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.manager-group-label {
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: #AAA;
-  margin-bottom: 6px;
-}
-
-.manager-group-cards {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-}
-
-.group-separator {
-  width: 1px;
-  background: var(--jfa-border);
-  align-self: stretch;
-  margin: 0 12px;
-}
-
-/* Card styles */
+/* Cards */
 .card {
-  background: var(--jfa-card-bg);
-  border: 1px solid var(--jfa-border);
-  border-top: 4px solid var(--dept-leadership);
-  padding: 14px 18px;
-  width: 210px;
-  position: relative;
-  transition: all 0.2s ease;
-  cursor: default;
-  z-index: 1;
+  background: var(--jfa-card-bg); border: 1px solid var(--jfa-border);
+  border-top: 4px solid var(--dept-leadership); padding: 14px 18px;
+  width: 210px; position: relative; transition: all 0.2s ease; cursor: default; z-index: 1;
 }
-
-.card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  transform: translateY(-2px);
-}
-
-.card.highlight {
-  box-shadow: 0 0 0 3px var(--jfa-turquoise), 0 4px 16px rgba(0,141,185,0.25);
-}
-
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+.card.highlight { box-shadow: 0 0 0 3px var(--jfa-turquoise), 0 4px 16px rgba(0,141,185,0.25); }
 .card.dimmed { opacity: 0.25; }
 
-.card .name {
-  font-family: 'Norwester', Impact, sans-serif;
-  font-size: 15px; text-transform: uppercase;
-  letter-spacing: 0.5px; color: var(--jfa-text);
-  margin-bottom: 2px;
-}
-
-.card .role {
-  font-size: 11px; color: var(--jfa-text-secondary);
-  margin-bottom: 6px; line-height: 1.3;
-}
-
+.card .name { font-family: 'Norwester', Impact, sans-serif; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--jfa-text); margin-bottom: 2px; }
+.card .role { font-size: 11px; color: var(--jfa-text-secondary); margin-bottom: 6px; line-height: 1.3; }
 .card .pay { font-size: 13px; font-weight: 700; color: var(--jfa-text); }
-
-.card .pay-detail {
-  font-size: 10px; color: var(--jfa-text-secondary); margin-top: 1px;
-}
-
-.card .badge {
-  display: inline-block; font-size: 9px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.5px;
-  padding: 2px 6px; margin-top: 5px;
-}
-
+.card .pay-detail { font-size: 10px; color: var(--jfa-text-secondary); margin-top: 1px; }
+.card .badge { display: inline-block; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 6px; margin-top: 5px; }
 .badge.w2 { background: var(--jfa-turquoise-light); color: var(--jfa-turquoise); }
 .badge.contractor { background: #FFF3E0; color: #D4760A; }
 .badge.open { background: #FFF9C4; color: #9E8600; }
 .badge.remote { background: #EDE7F6; color: #6B5B95; }
+.badge.hourly { background: #F3E5F5; color: #7B1FA2; }
+
+/* Reports-to line */
+.reports-to {
+  font-size: 10px; color: #999; margin-top: 6px; cursor: pointer;
+  border-bottom: 1px dashed transparent; display: block; transition: color 0.2s;
+  position: relative; z-index: 10; padding: 4px 0 2px;
+}
+.reports-to:hover { color: var(--jfa-turquoise); border-bottom-color: var(--jfa-turquoise); }
+.reports-to-select {
+  font-family: 'Montserrat', sans-serif; font-size: 11px; border: 1px solid var(--jfa-turquoise);
+  outline: none; padding: 4px 6px; background: var(--jfa-turquoise-light);
+  width: 100%; color: var(--jfa-text); margin-top: 2px; position: relative; z-index: 10;
+}
 
 .card.dept-leadership { border-top-color: var(--dept-leadership); }
 .card.dept-education { border-top-color: var(--dept-education); }
@@ -332,61 +185,99 @@ h1, h2, h3, h4 {
 .card.dept-fb { border-top-color: var(--dept-fb); }
 .card.dept-finance { border-top-color: var(--dept-finance); }
 .card.dept-sound { border-top-color: var(--dept-sound); }
-
-.card.board-card {
-  background: var(--jfa-gray); color: var(--jfa-white);
-  border-top: 4px solid var(--jfa-turquoise);
-  text-align: center; width: 260px;
-}
-
+.card.board-card { background: var(--jfa-gray); color: var(--jfa-white); border-top: 4px solid var(--jfa-turquoise); text-align: center; width: 260px; }
 .card.board-card .name { color: var(--jfa-white); }
 .card.board-card .role { color: rgba(255,255,255,0.7); }
 
-/* SVG connector lines */
-.connectors-svg {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+/* Edit & delete buttons on card hover */
+.card-actions {
+  position: absolute; top: 4px; right: 4px;
+  display: none; gap: 2px; z-index: 5;
+}
+.card:hover .card-actions { display: flex; }
+.card-action-btn {
+  width: 24px; height: 24px; border: none; cursor: pointer;
+  font-size: 12px; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.06); color: var(--jfa-text-secondary); transition: all 0.15s;
+}
+.card-action-btn:hover { background: rgba(0,0,0,0.12); }
+.card-action-btn.delete:hover { background: #FDECEA; color: #D32F2F; }
+
+/* Editable field styling */
+.editable { cursor: pointer; border-bottom: 1px dashed transparent; transition: border-color 0.2s; }
+.editable:hover { border-bottom-color: var(--jfa-turquoise); }
+.edit-input {
+  font-family: 'Montserrat', sans-serif; border: 1px solid var(--jfa-turquoise);
+  outline: none; padding: 2px 4px; background: var(--jfa-turquoise-light);
+  width: 100%; font-weight: inherit; font-size: inherit; color: var(--jfa-text);
+}
+.edit-input.name-input {
+  font-family: 'Norwester', Impact, sans-serif; text-transform: uppercase;
+  letter-spacing: 0.5px; font-size: 15px;
 }
 
-.connectors-svg line {
-  stroke: var(--jfa-border);
-  stroke-width: 2;
-}
+/* SVG connectors */
+.connectors-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.connectors-svg line { stroke: var(--jfa-border); stroke-width: 2; }
+.connectors-svg line.leader-line { stroke: var(--jfa-turquoise-mid); stroke-width: 2; stroke-dasharray: 6 4; }
 
-.connectors-svg line.leader-line {
-  stroke: var(--jfa-turquoise-mid);
-  stroke-width: 2;
-  stroke-dasharray: 6 4;
+/* Modal */
+.modal-overlay {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;
 }
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--jfa-white); padding: 28px 32px; width: 420px; max-width: 95vw;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.modal h2 { font-size: 18px; margin-bottom: 20px; color: var(--jfa-text); }
+.modal label { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--jfa-text-secondary); margin-bottom: 4px; margin-top: 14px; }
+.modal label:first-of-type { margin-top: 0; }
+.modal input, .modal select {
+  width: 100%; padding: 8px 10px; border: 1px solid var(--jfa-border);
+  font-family: 'Montserrat', sans-serif; font-size: 13px; outline: none;
+}
+.modal input:focus, .modal select:focus { border-color: var(--jfa-turquoise); }
+.modal-buttons { display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end; }
+.modal-btn {
+  padding: 10px 20px; border: none; font-family: 'Montserrat', sans-serif;
+  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+  cursor: pointer; transition: all 0.2s;
+}
+.modal-btn.primary { background: var(--jfa-turquoise); color: white; }
+.modal-btn.primary:hover { background: #007a9e; }
+.modal-btn.secondary { background: #E8EAED; color: var(--jfa-text); }
+.modal-btn.secondary:hover { background: #D9DDE3; }
+.modal-btn.danger { background: #D32F2F; color: white; }
+.modal-btn.danger:hover { background: #B71C1C; }
+
+/* Toast notification */
+.toast {
+  position: fixed; bottom: 24px; right: 24px; background: var(--jfa-gray);
+  color: white; padding: 12px 20px; font-family: 'Montserrat', sans-serif;
+  font-size: 13px; font-weight: 500; z-index: 2000;
+  transform: translateY(80px); opacity: 0; transition: all 0.3s ease;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
 
 /* Print */
 @media print {
-  .header-controls, .search-box, .toggle-btn, .legend, .no-print { display: none !important; }
+  .header-controls, .search-box, .btn, .legend, .no-print, .card-actions, .toast { display: none !important; }
   body { background: white; }
   .header { background: white; color: black; border-bottom: 3px solid var(--jfa-turquoise); }
   .logo { color: var(--jfa-turquoise); }
   .logo span { color: black; }
   .header h1 { color: black; }
-  .summary-bar { border-bottom: 1px solid #ccc; }
   .card { box-shadow: none; border: 1px solid #ccc; }
   .card:hover { transform: none; box-shadow: none; }
   .co-leader-row::before { border-color: #ccc; }
-}
-
-@media (max-width: 768px) {
-  .header { padding: 16px; }
-  .summary-bar { padding: 12px 16px; gap: 16px; }
-  .org-container { padding: 16px 8px; }
+  .editable { border-bottom: none; }
 }
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <div class="header">
   <div class="header-left">
     <div class="logo">Jazz Forum Arts<span>Tarrytown, NY</span></div>
@@ -397,16 +288,18 @@ h1, h2, h3, h4 {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="text" id="searchInput" placeholder="Search name or role..." oninput="handleSearch(this.value)" />
     </div>
-    <button class="toggle-btn active" id="btnBase" onclick="toggleView('base')">Base Pay</button>
-    <button class="toggle-btn" id="btnLoaded" onclick="toggleView('loaded')">Fully Loaded</button>
-    <button class="toggle-btn no-print" onclick="window.print()">Print</button>
+    <button class="btn active" id="btnBase" onclick="toggleView('base')">Base Pay</button>
+    <button class="btn" id="btnLoaded" onclick="toggleView('loaded')">Fully Loaded</button>
+    <button class="btn accent" onclick="openAddModal()">+ Add Person</button>
+    <button class="btn" onclick="exportJSON()">Export</button>
+    <button class="btn" onclick="document.getElementById('importFile').click()">Import</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importJSON(event)" />
+    <button class="btn no-print" onclick="window.print()">Print</button>
   </div>
 </div>
 
-<!-- Summary Bar -->
 <div class="summary-bar" id="summaryBar"></div>
 
-<!-- Legend -->
 <div class="legend">
   <span style="font-size:11px;font-weight:700;color:var(--jfa-text);text-transform:uppercase;letter-spacing:1px;">Departments:</span>
   <div class="legend-item"><div class="legend-dot" style="background:var(--dept-leadership)"></div> Leadership</div>
@@ -417,39 +310,111 @@ h1, h2, h3, h4 {
   <div class="legend-item"><div class="legend-dot" style="background:var(--dept-finance)"></div> Finance</div>
 </div>
 
-<!-- Org Chart -->
 <div class="org-container">
   <div class="org-chart" id="orgChart"></div>
 </div>
 
+<!-- Add/Edit Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <h2 id="modalTitle">Add New Position</h2>
+    <input type="hidden" id="editId" />
+    <label>Name</label>
+    <input type="text" id="fName" placeholder="e.g. Jane or Open Hire" />
+    <label>Role / Title</label>
+    <input type="text" id="fRole" placeholder="e.g. Marketing Coordinator" />
+    <label>Annual Base Pay ($)</label>
+    <input type="number" id="fBase" placeholder="0" min="0" step="100" />
+    <label>Pay Note (optional)</label>
+    <input type="text" id="fPayNote" placeholder="e.g. $900/week or Variable / Hourly" />
+    <label>Employment Type</label>
+    <select id="fType">
+      <option value="w2">W-2 Employee</option>
+      <option value="1099">1099 Contractor</option>
+      <option value="open">Open Position</option>
+      <option value="hourly">Variable / Hourly</option>
+    </select>
+    <label>Department</label>
+    <select id="fDept">
+      <option value="leadership">Leadership</option>
+      <option value="education">Education</option>
+      <option value="sound">Sound</option>
+      <option value="operations">Operations</option>
+      <option value="fb">Food & Beverage</option>
+      <option value="finance">Finance</option>
+    </select>
+    <label>Reports To</label>
+    <select id="fReportsTo"></select>
+    <label>Tier (Org Level)</label>
+    <select id="fTier">
+      <option value="2">Tier 2 — Manager Level</option>
+      <option value="3">Tier 3 — Staff Level</option>
+    </select>
+    <label style="display:flex;align-items:center;gap:8px;margin-top:14px;">
+      <input type="checkbox" id="fRemote" style="width:auto;" /> Remote Employee
+    </label>
+    <div class="modal-buttons">
+      <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
+      <button class="modal-btn danger" id="deleteBtn" style="display:none" onclick="deletePerson()">Delete</button>
+      <button class="modal-btn primary" onclick="savePerson()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
 <script>
 const EMPLOYER_TAX_RATE = 0.0965;
 
-const people = [
+const DEFAULT_PEOPLE = [
   { id: 'board', name: 'Board of Directors', role: 'Governing Body', dept: 'leadership', base: 0, type: 'board', reportsTo: null, tier: 0 },
-
   { id: 'darrian', name: 'Darrian', role: 'Executive Director', dept: 'leadership', base: 120000, type: 'w2', reportsTo: 'board', tier: 1 },
   { id: 'clara', name: 'Clara', role: 'Chief Operating Officer', dept: 'leadership', base: 120000, type: 'w2', reportsTo: 'board', tier: 1 },
-
-  // Tier 2 — Managers (report to Darrian)
   { id: 'giulia', name: 'Giulia', role: 'Education & Programs Coordinator', dept: 'education', base: 62400, type: 'w2', reportsTo: 'darrian', tier: 2 },
   { id: 'dev_mgr', name: 'Open Hire', role: 'Development Manager', dept: 'leadership', base: 85000, type: 'open', reportsTo: 'darrian', tier: 2 },
   { id: 'cfo', name: 'Open Hire', role: 'Fractional CFO', dept: 'finance', base: 78000, type: 'open', reportsTo: 'darrian', tier: 2 },
-
-  // Tier 2 — Managers (report to Clara)
   { id: 'isak', name: 'Isak', role: 'Operations & Marketing Manager', dept: 'operations', base: 102000, type: 'w2', reportsTo: 'clara', tier: 2, remote: 'Amsterdam', payNote: 'All-in (Remote)' },
   { id: 'john_chef', name: 'John', role: 'Chef', dept: 'fb', base: 85100, type: 'w2', reportsTo: 'clara', tier: 2 },
   { id: 'aerial', name: 'Aerial', role: 'FOH Manager', dept: 'fb', base: 76960, type: 'w2', reportsTo: 'clara', tier: 2 },
-
-  // Tier 3 — Staff
   { id: 'cam', name: 'Cam', role: 'Sound Engineer', dept: 'sound', base: 46800, type: '1099', reportsTo: 'darrian', tier: 3, payNote: '$900/week' },
   { id: 'neal', name: 'Neal', role: 'Education Staff', dept: 'education', base: 48000, type: '1099', reportsTo: 'giulia', tier: 3 },
   { id: 'boyce', name: 'Boyce', role: 'Education Staff', dept: 'education', base: 48000, type: '1099', reportsTo: 'giulia', tier: 3 },
   { id: 'boh', name: 'BOH Staff', role: 'Kitchen, Prep, Dishwashers', dept: 'fb', base: 0, type: 'hourly', reportsTo: 'john_chef', tier: 3, payNote: 'Variable / Hourly' },
   { id: 'foh', name: 'FOH Staff', role: 'Waiters, Bussers, Bartenders', dept: 'fb', base: 0, type: 'hourly', reportsTo: 'aerial', tier: 3, payNote: 'Variable / Hourly' },
+  { id: 'facilities', name: 'Open Hire', role: 'Facilities Manager', dept: 'operations', base: 20000, type: '1099', reportsTo: 'clara', tier: 3 },
 ];
 
+// Load from localStorage or use defaults
+const DATA_VERSION = '3';
+let people = loadData();
 let viewMode = 'base';
+
+function loadData() {
+  try {
+    const savedVersion = localStorage.getItem('jfa-org-chart-version');
+    const saved = localStorage.getItem('jfa-org-chart-data');
+    if (saved && savedVersion === DATA_VERSION) return JSON.parse(saved);
+  } catch(e) {}
+  // Clear stale data and use fresh defaults
+  try { localStorage.removeItem('jfa-org-chart-data'); } catch(e) {}
+  return JSON.parse(JSON.stringify(DEFAULT_PEOPLE));
+}
+
+function saveData() {
+  try {
+    localStorage.setItem('jfa-org-chart-data', JSON.stringify(people));
+    localStorage.setItem('jfa-org-chart-version', DATA_VERSION);
+  } catch(e) {}
+  showToast('Changes saved');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
 
 function getFullyLoaded(p) {
   if (p.type === 'w2' && p.id !== 'isak') return Math.round(p.base * (1 + EMPLOYER_TAX_RATE));
@@ -458,52 +423,141 @@ function getFullyLoaded(p) {
 
 function fmt(n) { return n === 0 ? '—' : '$' + n.toLocaleString('en-US'); }
 
+// === INLINE EDITING ===
+function startEdit(el, personId, field) {
+  if (el.querySelector('input')) return; // already editing
+  const person = people.find(p => p.id === personId);
+  if (!person) return;
+
+  const currentVal = field === 'base' ? person.base : person[field];
+  const origText = el.textContent;
+
+  const input = document.createElement('input');
+  input.className = field === 'name' ? 'edit-input name-input' : 'edit-input';
+  input.type = field === 'base' ? 'number' : 'text';
+  if (field === 'base') { input.min = 0; input.step = 100; }
+  input.value = currentVal;
+
+  el.textContent = '';
+  el.appendChild(input);
+  input.focus();
+  input.select();
+
+  const finish = () => {
+    let newVal = field === 'base' ? parseFloat(input.value) || 0 : input.value.trim();
+    if (newVal === '' && field !== 'base') newVal = origText;
+    person[field] = newVal;
+    saveData();
+    renderChart();
+  };
+
+  input.addEventListener('blur', finish);
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); finish(); }
+    if (e.key === 'Escape') { el.textContent = origText; }
+  });
+}
+
+function startReportsToEdit(el, personId) {
+  event.stopPropagation();
+  if (el.querySelector('select')) return;
+  const person = people.find(p => p.id === personId);
+  if (!person) return;
+
+  const sel = document.createElement('select');
+  sel.className = 'reports-to-select';
+
+  // Possible managers: anyone in tier 0-2 who isn't the person themselves
+  people.filter(p => p.tier <= 2 && p.id !== personId && p.type !== 'board').forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p.id;
+    opt.textContent = `${p.name} — ${p.role}`;
+    if (p.id === person.reportsTo) opt.selected = true;
+    sel.appendChild(opt);
+  });
+
+  el.textContent = '';
+  el.appendChild(sel);
+  sel.focus();
+
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    person.reportsTo = sel.value;
+    saveData();
+    renderChart();
+  };
+
+  sel.addEventListener('change', finish);
+  sel.addEventListener('blur', finish);
+  sel.addEventListener('click', (e) => e.stopPropagation());
+}
+
+// === RENDER ===
 function renderCardHTML(p) {
   const pay = viewMode === 'loaded' ? getFullyLoaded(p) : p.base;
+  const isBoard = p.type === 'board';
+  const isProtected = p.tier <= 1 || p.type === 'board';
 
   let badgeHTML = '';
   if (p.type === 'w2') badgeHTML = '<span class="badge w2">W-2</span>';
   else if (p.type === '1099') badgeHTML = '<span class="badge contractor">1099</span>';
   else if (p.type === 'open') badgeHTML = '<span class="badge open">Open Position</span>';
+  else if (p.type === 'hourly') badgeHTML = '<span class="badge hourly">Hourly</span>';
   if (p.remote) badgeHTML += ' <span class="badge remote">Remote</span>';
 
   let payHTML = '';
-  if (p.type === 'board') {
+  if (isBoard) {
     payHTML = '';
-  } else if (p.payNote && p.base > 0) {
-    payHTML = `<div class="pay">${fmt(pay)}<span style="font-size:10px;font-weight:500;color:var(--jfa-text-secondary)"> /yr</span></div><div class="pay-detail">${p.payNote}</div>`;
+  } else if (p.base > 0) {
+    payHTML = `<div class="pay editable" onclick="startEdit(this,'${p.id}','base')" title="Click to edit salary">${fmt(pay)}<span style="font-size:10px;font-weight:500;color:var(--jfa-text-secondary)"> /yr</span></div>`;
+    if (p.payNote) payHTML += `<div class="pay-detail">${p.payNote}</div>`;
+    else if (viewMode === 'loaded' && p.type === 'w2' && p.id !== 'isak') payHTML += `<div class="pay-detail">Base: ${fmt(p.base)}</div>`;
   } else if (p.payNote) {
     payHTML = `<div class="pay-detail">${p.payNote}</div>`;
-  } else if (pay > 0) {
-    payHTML = `<div class="pay">${fmt(pay)}<span style="font-size:10px;font-weight:500;color:var(--jfa-text-secondary)"> /yr</span></div>`;
-    if (viewMode === 'loaded' && p.type === 'w2' && p.id !== 'isak') {
-      payHTML += `<div class="pay-detail">Base: ${fmt(p.base)}</div>`;
-    }
   }
 
-  const isBoard = p.type === 'board';
   const cardClass = isBoard ? 'card board-card' : `card dept-${p.dept}`;
 
+  const actionsHTML = isBoard ? '' : `
+    <div class="card-actions">
+      <button class="card-action-btn" onclick="openEditModal('${p.id}')" title="Edit">&#9998;</button>
+      ${!isProtected ? `<button class="card-action-btn delete" onclick="confirmDelete('${p.id}')" title="Remove">&#10005;</button>` : ''}
+    </div>`;
+
+  const nameEditable = isBoard ? `<div class="name">${p.name}</div>` :
+    `<div class="name editable" onclick="startEdit(this,'${p.id}','name')" title="Click to edit name">${p.name}</div>`;
+  const roleEditable = isBoard ? `<div class="role">${p.role}</div>` :
+    `<div class="role editable" onclick="startEdit(this,'${p.id}','role')" title="Click to edit role">${p.role}</div>`;
+
+  // Reports-to line (not shown on board or co-leaders)
+  let reportsToHTML = '';
+  if (!isBoard && p.reportsTo) {
+    const mgr = people.find(x => x.id === p.reportsTo);
+    const mgrName = mgr ? mgr.name : p.reportsTo;
+    reportsToHTML = `<div class="reports-to" onclick="event.stopPropagation(); startReportsToEdit(this,'${p.id}')" title="Click to change manager">Reports to: ${mgrName}</div>`;
+  }
+
   return `<div class="${cardClass}" data-id="${p.id}" data-name="${p.name.toLowerCase()}" data-role="${p.role.toLowerCase()}">
-    <div class="name">${p.name}</div>
-    <div class="role">${p.role}</div>
+    ${actionsHTML}
+    ${nameEditable}
+    ${roleEditable}
     ${payHTML}
     ${badgeHTML}
+    ${reportsToHTML}
   </div>`;
 }
 
 function renderChart() {
   const board = people.find(p => p.tier === 0);
-  const leaders = people.filter(p => p.tier === 1);
-  const darrian = leaders.find(p => p.id === 'darrian');
-  const clara = leaders.find(p => p.id === 'clara');
+  const darrian = people.find(p => p.id === 'darrian');
+  const clara = people.find(p => p.id === 'clara');
 
   const t2Darrian = people.filter(p => p.tier === 2 && p.reportsTo === 'darrian');
   const t2Clara = people.filter(p => p.tier === 2 && p.reportsTo === 'clara');
-
   const t3 = people.filter(p => p.tier === 3);
 
-  // Group tier 3 by manager for visual grouping
   const t3Groups = {};
   t3.forEach(p => {
     const mgr = p.reportsTo;
@@ -513,134 +567,81 @@ function renderChart() {
 
   let html = '';
 
-  // Tier 0 — Board
+  // Tier 0
   html += `<div class="tier-label">Governance</div>`;
   html += `<div class="tier">${renderCardHTML(board)}</div>`;
   html += `<div class="tier-spacer"></div>`;
 
-  // Tier 1 — Co-Leadership
+  // Tier 1
   html += `<div class="tier-label">Co-Leadership</div>`;
-  html += `<div class="tier">
-    <div class="co-leader-row">
-      <div class="co-leader-badge">Co-Leaders</div>
-      ${renderCardHTML(darrian)}
-      <div class="co-leader-divider">&amp;</div>
-      ${renderCardHTML(clara)}
-    </div>
-  </div>`;
+  html += `<div class="tier"><div class="co-leader-row"><div class="co-leader-badge">Co-Leaders</div>${renderCardHTML(darrian)}<div class="co-leader-divider">&amp;</div>${renderCardHTML(clara)}</div></div>`;
   html += `<div class="tier-spacer"></div>`;
 
-  // Tier 2 — Managers
+  // Tier 2
   html += `<div class="tier-label">Managers</div>`;
-  html += `<div class="tier">
-    <div class="manager-group">
-      <div class="manager-group-label">Reports to Darrian</div>
-      <div class="manager-group-cards">
-        ${t2Darrian.map(p => renderCardHTML(p)).join('')}
-      </div>
-    </div>
-    <div class="group-separator"></div>
-    <div class="manager-group">
-      <div class="manager-group-label">Reports to Clara</div>
-      <div class="manager-group-cards">
-        ${t2Clara.map(p => renderCardHTML(p)).join('')}
-      </div>
-    </div>
-  </div>`;
-  html += `<div class="tier-spacer"></div>`;
-
-  // Tier 3 — Staff
-  html += `<div class="tier-label">Staff</div>`;
-  const t3Entries = [];
-  // Order: Cam (reports to Darrian), Neal & Boyce (reports to Giulia), BOH (John), FOH (Aerial)
-  const t3Order = ['darrian', 'giulia', 'john_chef', 'aerial'];
-  t3Order.forEach(mgr => {
-    if (t3Groups[mgr]) {
-      const mgrPerson = people.find(p => p.id === mgr);
-      t3Entries.push({ mgr: mgrPerson.name, people: t3Groups[mgr] });
-    }
-  });
-
   html += `<div class="tier">`;
-  t3Entries.forEach((group, i) => {
-    if (i > 0) html += `<div class="group-separator"></div>`;
-    html += `<div class="manager-group">
-      <div class="manager-group-label">Reports to ${group.mgr}</div>
-      <div class="manager-group-cards">
-        ${group.people.map(p => renderCardHTML(p)).join('')}
-      </div>
-    </div>`;
+  if (t2Darrian.length) {
+    html += `<div class="manager-group"><div class="manager-group-label">Reports to ${darrian.name}</div><div class="manager-group-cards">${t2Darrian.map(p => renderCardHTML(p)).join('')}</div></div>`;
+  }
+  if (t2Darrian.length && t2Clara.length) html += `<div class="group-separator"></div>`;
+  if (t2Clara.length) {
+    html += `<div class="manager-group"><div class="manager-group-label">Reports to ${clara.name}</div><div class="manager-group-cards">${t2Clara.map(p => renderCardHTML(p)).join('')}</div></div>`;
+  }
+  html += `</div><div class="tier-spacer"></div>`;
+
+  // Tier 3
+  html += `<div class="tier-label">Staff</div><div class="tier">`;
+  // Build order dynamically: darrian first, then tier-2 managers under darrian, then clara, then tier-2 managers under clara
+  const t3Order = ['darrian', ...t2Darrian.map(p => p.id), 'clara', ...t2Clara.map(p => p.id)];
+  let firstGroup = true;
+  t3Order.forEach(mgrId => {
+    if (t3Groups[mgrId]) {
+      const mgrPerson = people.find(p => p.id === mgrId);
+      if (!firstGroup) html += `<div class="group-separator"></div>`;
+      html += `<div class="manager-group"><div class="manager-group-label">Reports to ${mgrPerson.name}</div><div class="manager-group-cards">${t3Groups[mgrId].map(p => renderCardHTML(p)).join('')}</div></div>`;
+      firstGroup = false;
+    }
   });
   html += `</div>`;
 
   document.getElementById('orgChart').innerHTML = html;
-
-  // Draw connector lines after layout
   requestAnimationFrame(() => drawConnectors());
-
   updateSummary();
 }
 
 function drawConnectors() {
-  // Remove old SVG
   const old = document.querySelector('.connectors-svg');
   if (old) old.remove();
-
   const chart = document.getElementById('orgChart');
   const chartRect = chart.getBoundingClientRect();
-
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.classList.add('connectors-svg');
   svg.setAttribute('width', chart.scrollWidth);
   svg.setAttribute('height', chart.scrollHeight);
-  svg.style.position = 'absolute';
-  svg.style.top = '0';
-  svg.style.left = '0';
 
-  // Draw lines from each person to their manager
   people.forEach(p => {
     if (!p.reportsTo) return;
-
     const childEl = chart.querySelector(`[data-id="${p.id}"]`);
     const parentEl = chart.querySelector(`[data-id="${p.reportsTo}"]`);
     if (!childEl || !parentEl) return;
 
     const cRect = childEl.getBoundingClientRect();
     const pRect = parentEl.getBoundingClientRect();
-
     const x1 = pRect.left + pRect.width / 2 - chartRect.left;
     const y1 = pRect.bottom - chartRect.top;
     const x2 = cRect.left + cRect.width / 2 - chartRect.left;
     const y2 = cRect.top - chartRect.top;
-
-    // Draw elbow connector: down from parent, then horizontal, then down to child
     const midY = y1 + (y2 - y1) / 2;
+    const cls = p.tier === 1 ? 'leader-line' : '';
 
-    const isLeaderLine = p.tier === 1;
-    const cls = isLeaderLine ? 'leader-line' : '';
-
-    // Vertical from parent down to midpoint
-    const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line1.setAttribute('x1', x1); line1.setAttribute('y1', y1);
-    line1.setAttribute('x2', x1); line1.setAttribute('y2', midY);
-    if (cls) line1.classList.add(cls);
-    svg.appendChild(line1);
-
-    // Horizontal at midpoint
-    const line2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line2.setAttribute('x1', x1); line2.setAttribute('y1', midY);
-    line2.setAttribute('x2', x2); line2.setAttribute('y2', midY);
-    if (cls) line2.classList.add(cls);
-    svg.appendChild(line2);
-
-    // Vertical from midpoint down to child
-    const line3 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    line3.setAttribute('x1', x2); line3.setAttribute('y1', midY);
-    line3.setAttribute('x2', x2); line3.setAttribute('y2', y2);
-    if (cls) line3.classList.add(cls);
-    svg.appendChild(line3);
+    [[x1,y1,x1,midY],[x1,midY,x2,midY],[x2,midY,x2,y2]].forEach(([ax,ay,bx,by]) => {
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1',ax); line.setAttribute('y1',ay);
+      line.setAttribute('x2',bx); line.setAttribute('y2',by);
+      if (cls) line.classList.add(cls);
+      svg.appendChild(line);
+    });
   });
-
   chart.appendChild(svg);
 }
 
@@ -658,17 +659,121 @@ function updateSummary() {
     <div class="summary-stat"><span class="label">W-2 Employees</span><span class="value">${w2.length}</span></div>
     <div class="summary-stat"><span class="label">1099 Contractors</span><span class="value">${contractors.length}</span></div>
     <div class="summary-stat"><span class="label">${viewMode === 'loaded' ? 'Total Fully Loaded' : 'Total Base Payroll'}</span><span class="value accent">${fmt(display)}</span></div>
-    <div class="summary-stat"><span class="label">Employer Tax Estimate</span><span class="value">${fmt(Math.round(employerTax))}</span></div>
+    <div class="summary-stat"><span class="label">Employer Tax</span><span class="value">${fmt(Math.round(employerTax))}</span></div>
     <div class="summary-stat"><span class="label">Budget Cap</span><span class="value">${fmt(budgetCap)}</span></div>
-    <div class="summary-stat budget-bar-wrapper">
-      <span class="label">Utilization: ${utilization}%</span>
-      <div class="budget-bar-track">
-        <div class="budget-bar-fill" style="width:${Math.min(utilization, 100)}%;${parseFloat(utilization) > 95 ? 'background:#D4760A;' : ''}${parseFloat(utilization) > 100 ? 'background:#B5395B;' : ''}"></div>
-      </div>
-    </div>
+    <div class="summary-stat budget-bar-wrapper"><span class="label">Utilization: ${utilization}%</span><div class="budget-bar-track"><div class="budget-bar-fill" style="width:${Math.min(utilization,100)}%;${parseFloat(utilization)>95?'background:#D4760A;':''}${parseFloat(utilization)>100?'background:#B5395B;':''}"></div></div></div>
   `;
 }
 
+// === MODAL ===
+function populateReportsTo(selectedId) {
+  const sel = document.getElementById('fReportsTo');
+  sel.innerHTML = '';
+  people.filter(p => p.tier <= 2 && p.type !== 'board').forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p.id;
+    opt.textContent = `${p.name} — ${p.role}`;
+    if (p.id === selectedId) opt.selected = true;
+    sel.appendChild(opt);
+  });
+}
+
+function openAddModal() {
+  document.getElementById('modalTitle').textContent = 'Add New Position';
+  document.getElementById('editId').value = '';
+  document.getElementById('fName').value = '';
+  document.getElementById('fRole').value = '';
+  document.getElementById('fBase').value = '';
+  document.getElementById('fPayNote').value = '';
+  document.getElementById('fType').value = '1099';
+  document.getElementById('fDept').value = 'operations';
+  document.getElementById('fTier').value = '3';
+  document.getElementById('fRemote').checked = false;
+  document.getElementById('deleteBtn').style.display = 'none';
+  populateReportsTo('clara');
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function openEditModal(id) {
+  const p = people.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('modalTitle').textContent = 'Edit Position';
+  document.getElementById('editId').value = p.id;
+  document.getElementById('fName').value = p.name;
+  document.getElementById('fRole').value = p.role;
+  document.getElementById('fBase').value = p.base;
+  document.getElementById('fPayNote').value = p.payNote || '';
+  document.getElementById('fType').value = p.type;
+  document.getElementById('fDept').value = p.dept;
+  document.getElementById('fTier').value = String(p.tier);
+  document.getElementById('fRemote').checked = !!p.remote;
+  const isProtected = p.tier <= 1;
+  document.getElementById('deleteBtn').style.display = isProtected ? 'none' : 'inline-block';
+  populateReportsTo(p.reportsTo);
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+function savePerson() {
+  const editId = document.getElementById('editId').value;
+  const name = document.getElementById('fName').value.trim() || 'New Hire';
+  const role = document.getElementById('fRole').value.trim() || 'TBD';
+  const base = parseFloat(document.getElementById('fBase').value) || 0;
+  const payNote = document.getElementById('fPayNote').value.trim() || undefined;
+  const type = document.getElementById('fType').value;
+  const dept = document.getElementById('fDept').value;
+  const reportsTo = document.getElementById('fReportsTo').value;
+  const tier = parseInt(document.getElementById('fTier').value);
+  const remote = document.getElementById('fRemote').checked ? 'Remote' : undefined;
+
+  if (editId) {
+    const p = people.find(x => x.id === editId);
+    if (p) {
+      Object.assign(p, { name, role, base, payNote, type, dept, reportsTo, tier, remote });
+    }
+  } else {
+    const newId = 'person_' + Date.now();
+    people.push({ id: newId, name, role, base, payNote, type, dept, reportsTo, tier, remote });
+  }
+
+  saveData();
+  closeModal();
+  renderChart();
+}
+
+function confirmDelete(id) {
+  const p = people.find(x => x.id === id);
+  if (!p) return;
+  if (confirm(`Remove "${p.name} — ${p.role}" from the org chart?`)) {
+    // Also remove anyone who reports to this person
+    const removeIds = new Set([id]);
+    let changed = true;
+    while (changed) {
+      changed = false;
+      people.forEach(x => {
+        if (removeIds.has(x.reportsTo) && !removeIds.has(x.id)) {
+          removeIds.add(x.id);
+          changed = true;
+        }
+      });
+    }
+    const removedCount = removeIds.size;
+    people = people.filter(x => !removeIds.has(x.id));
+    saveData();
+    renderChart();
+    showToast(`Removed ${removedCount} position${removedCount > 1 ? 's' : ''}`);
+  }
+}
+
+function deletePerson() {
+  const id = document.getElementById('editId').value;
+  if (id) { closeModal(); confirmDelete(id); }
+}
+
+// === VIEW TOGGLE ===
 function toggleView(mode) {
   viewMode = mode;
   document.getElementById('btnBase').classList.toggle('active', mode === 'base');
@@ -676,32 +781,58 @@ function toggleView(mode) {
   renderChart();
 }
 
+// === SEARCH ===
 function handleSearch(query) {
   const cards = document.querySelectorAll('.card[data-id]');
-  if (!query.trim()) {
-    cards.forEach(c => c.classList.remove('highlight', 'dimmed'));
-    return;
-  }
+  if (!query.trim()) { cards.forEach(c => c.classList.remove('highlight','dimmed')); return; }
   const q = query.toLowerCase();
   let hasMatch = false;
   cards.forEach(c => {
-    const name = c.getAttribute('data-name') || '';
-    const role = c.getAttribute('data-role') || '';
-    if (name.includes(q) || role.includes(q)) {
-      c.classList.add('highlight');
-      c.classList.remove('dimmed');
-      hasMatch = true;
-    } else {
-      c.classList.remove('highlight');
-      c.classList.add('dimmed');
-    }
+    const match = (c.getAttribute('data-name')||'').includes(q) || (c.getAttribute('data-role')||'').includes(q);
+    c.classList.toggle('highlight', match);
+    c.classList.toggle('dimmed', !match);
+    if (match) hasMatch = true;
   });
   if (!hasMatch) cards.forEach(c => c.classList.remove('dimmed'));
 }
 
-// Redraw connectors on resize
-window.addEventListener('resize', () => requestAnimationFrame(drawConnectors));
+// === EXPORT / IMPORT ===
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(people, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'jfa-org-chart-data.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Exported to JSON');
+}
 
+function importJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (Array.isArray(data) && data.length > 0 && data[0].id) {
+        people = data;
+        saveData();
+        renderChart();
+        showToast('Imported successfully');
+      } else {
+        alert('Invalid file format. Expected a JSON array of people.');
+      }
+    } catch(err) {
+      alert('Could not parse file: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+// === INIT ===
+window.addEventListener('resize', () => requestAnimationFrame(drawConnectors));
 renderChart();
 </script>
 
