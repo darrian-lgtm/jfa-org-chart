@@ -81,85 +81,183 @@ h1, h2, h3, h4 {
 .header h1 { font-size: 20px; letter-spacing: 2px; font-weight: normal; }
 .header-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
-.search-box { position: relative; }
-.search-box input {
-  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 0; color: var(--jfa-white); padding: 8px 12px 8px 34px;
-  font-family: 'Montserrat', sans-serif; font-size: 13px; width: 200px; outline: none;
+.tab-buttons {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
-.search-box input::placeholder { color: rgba(255,255,255,0.5); }
-.search-box input:focus { border-color: var(--jfa-turquoise); }
-.search-box svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); opacity: 0.5; }
+
+.tab-btn {
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 8px 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: rgba(255,255,255,0.9);
+  border-bottom-color: rgba(255,255,255,0.3);
+}
+
+.tab-btn.active {
+  color: var(--jfa-turquoise);
+  border-bottom-color: var(--jfa-turquoise);
+}
 
 .btn {
-  background: rgba(255,255,255,0.1); color: var(--jfa-white);
-  border: 1px solid rgba(255,255,255,0.2); border-radius: 0;
-  padding: 8px 14px; font-family: 'Montserrat', sans-serif;
-  font-size: 11px; font-weight: 600; text-transform: uppercase;
-  cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px;
-}
-.btn:hover { background: rgba(255,255,255,0.2); }
-.btn.active { background: var(--jfa-turquoise); border-color: var(--jfa-turquoise); }
-.btn.accent { background: var(--jfa-turquoise); border-color: var(--jfa-turquoise); }
-.btn.accent:hover { background: #007a9e; }
-
-/* Summary bar */
-.summary-bar {
-  background: var(--jfa-white); border-bottom: 1px solid var(--jfa-border);
-  padding: 14px 32px; display: flex; gap: 32px; flex-wrap: wrap; align-items: center;
-}
-.summary-stat { display: flex; flex-direction: column; }
-.summary-stat .label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--jfa-text-secondary); font-weight: 600; }
-.summary-stat .value { font-size: 18px; font-weight: 700; color: var(--jfa-text); }
-.summary-stat .value.accent { color: var(--jfa-turquoise); }
-.budget-bar-wrapper { flex: 1; min-width: 200px; max-width: 350px; }
-.budget-bar-track { background: #E8EAED; height: 8px; width: 100%; }
-.budget-bar-fill { height: 100%; background: var(--jfa-turquoise); transition: width 0.5s ease; }
-
-/* Legend */
-.legend {
-  padding: 12px 32px; display: flex; gap: 20px; flex-wrap: wrap;
-  align-items: center; background: var(--jfa-white); border-bottom: 1px solid var(--jfa-border);
-}
-.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--jfa-text-secondary); }
-.legend-dot { width: 10px; height: 10px; }
-
-/* Org chart */
-.org-container { padding: 32px 16px; overflow-x: auto; }
-.org-chart {
-  position: relative; display: flex; flex-direction: column;
-  align-items: center; min-width: 1500px;
+  background: var(--jfa-turquoise);
+  color: var(--jfa-white);
+  border: none;
+  padding: 8px 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s ease;
 }
 
-.tier { display: flex; justify-content: center; align-items: flex-start; gap: 20px; width: 100%; position: relative; z-index: 1; }
-.tier-label { font-family: 'Norwester', Impact, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #C0C4CC; margin-bottom: 8px; text-align: center; }
+.btn:hover { background: var(--jfa-gray); }
+.btn.accent { background: var(--jfa-turquoise); }
+
+#headerTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--jfa-white);
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Info Banner */
+.info-banner {
+  background-color: #f5f5f5;
+  border-left: 4px solid var(--jfa-turquoise);
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--jfa-text);
+  line-height: 1.5;
+}
+
+.info-banner strong { font-weight: 600; }
+
+/* Tabs */
+.tab-view {
+  display: none;
+  padding: 32px;
+  min-height: 60vh;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.tab-view.active {
+  display: block;
+}
+
+/* Org Chart Container */
+.org-chart-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 1500px;
+}
+
+.org-chart-container-fy25 {
+  min-width: 900px;
+}
+
+.org-chart-container-fy26 {
+  min-width: 1200px;
+}
+
+/* Tier Structure */
+.tier-label {
+  font-family: 'Norwester', Impact, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #C0C4CC;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.tier {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
 .tier-spacer { height: 48px; width: 100%; }
-
-.co-leader-row { display: flex; align-items: flex-start; justify-content: center; gap: 0; position: relative; }
-.co-leader-row::before { content: ''; position: absolute; top: -2px; left: 20px; right: 20px; bottom: -2px; border: 2px dashed var(--jfa-turquoise-mid); pointer-events: none; z-index: 0; }
-.co-leader-badge { font-family: 'Norwester', Impact, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: var(--jfa-turquoise); background: var(--jfa-turquoise-light); padding: 3px 14px; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); z-index: 2; white-space: nowrap; }
-.co-leader-divider { display: flex; align-items: center; justify-content: center; padding: 0 10px; align-self: stretch; z-index: 1; font-size: 14px; font-weight: 700; color: var(--jfa-turquoise); }
-
-.manager-group { display: flex; flex-direction: column; align-items: center; }
-.manager-group-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #AAA; margin-bottom: 6px; }
-.manager-group-cards { display: flex; gap: 16px; justify-content: center; }
-.group-separator { width: 1px; background: var(--jfa-border); align-self: stretch; margin: 0 12px; }
 
 /* Cards */
 .card {
-  background: var(--jfa-card-bg); border: 1px solid var(--jfa-border);
-  border-top: 4px solid var(--dept-leadership); padding: 14px 18px;
-  width: 210px; position: relative; transition: all 0.2s ease; cursor: default; z-index: 1;
+  background: var(--jfa-card-bg);
+  border: 1px solid var(--jfa-border);
+  border-top: 4px solid var(--dept-leadership);
+  padding: 14px 18px;
+  width: 210px;
+  position: relative;
+  transition: all 0.2s ease;
+  cursor: default;
+  z-index: 1;
 }
-.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-.card.highlight { box-shadow: 0 0 0 3px var(--jfa-turquoise), 0 4px 16px rgba(0,141,185,0.25); }
-.card.dimmed { opacity: 0.25; }
 
-.card .name { font-family: 'Norwester', Impact, sans-serif; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--jfa-text); margin-bottom: 2px; }
-.card .role { font-size: 11px; color: var(--jfa-text-secondary); margin-bottom: 6px; line-height: 1.3; }
-.card .pay { font-size: 13px; font-weight: 700; color: var(--jfa-text); }
-.card .pay-detail { font-size: 10px; color: var(--jfa-text-secondary); margin-top: 1px; }
-.card .badge { display: inline-block; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 6px; margin-top: 5px; }
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.card .name {
+  font-family: 'Norwester', Impact, sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--jfa-text);
+  margin-bottom: 2px;
+}
+
+.card .role {
+  font-size: 11px;
+  color: var(--jfa-text-secondary);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.card .pay {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--jfa-text);
+}
+
+.card .pay-detail {
+  font-size: 10px;
+  color: var(--jfa-text-secondary);
+  margin-top: 1px;
+}
+
+.card .badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  margin-top: 5px;
+}
+
 .badge.w2 { background: var(--jfa-turquoise-light); color: var(--jfa-turquoise); }
 .badge.contractor { background: #FFF3E0; color: #D4760A; }
 .badge.open { background: #FFF9C4; color: #9E8600; }
@@ -168,111 +266,502 @@ h1, h2, h3, h4 {
 
 /* Reports-to line */
 .reports-to {
-  font-size: 10px; color: #999; margin-top: 6px; cursor: pointer;
-  border-bottom: 1px dashed transparent; display: block; transition: color 0.2s;
-  position: relative; z-index: 10; padding: 4px 0 2px;
-}
-.reports-to:hover { color: var(--jfa-turquoise); border-bottom-color: var(--jfa-turquoise); }
-.reports-to-select {
-  font-family: 'Montserrat', sans-serif; font-size: 11px; border: 1px solid var(--jfa-turquoise);
-  outline: none; padding: 4px 6px; background: var(--jfa-turquoise-light);
-  width: 100%; color: var(--jfa-text); margin-top: 2px; position: relative; z-index: 10;
+  font-size: 10px;
+  color: #999;
+  margin-top: 6px;
+  cursor: pointer;
+  border-bottom: 1px dashed transparent;
+  display: block;
+  transition: color 0.2s;
+  position: relative;
+  z-index: 10;
+  padding: 4px 0 2px;
 }
 
+.reports-to:hover {
+  color: var(--jfa-turquoise);
+  border-bottom-color: var(--jfa-turquoise);
+}
+
+/* Department top-border colors */
 .card.dept-leadership { border-top-color: var(--dept-leadership); }
 .card.dept-education { border-top-color: var(--dept-education); }
 .card.dept-operations { border-top-color: var(--dept-operations); }
 .card.dept-fb { border-top-color: var(--dept-fb); }
 .card.dept-finance { border-top-color: var(--dept-finance); }
 .card.dept-sound { border-top-color: var(--dept-sound); }
+
+/* Board card (governance tier) */
 .card.board-card { background: var(--jfa-gray); color: var(--jfa-white); border-top: 4px solid var(--jfa-turquoise); text-align: center; width: 260px; }
 .card.board-card .name { color: var(--jfa-white); }
 .card.board-card .role { color: rgba(255,255,255,0.7); }
 
 /* Edit & delete buttons on card hover */
 .card-actions {
-  position: absolute; top: 4px; right: 4px;
-  display: none; gap: 2px; z-index: 5;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: none;
+  gap: 2px;
+  z-index: 5;
 }
-.card:hover .card-actions { display: flex; }
+
+.card:hover .card-actions {
+  display: flex;
+}
+
 .card-action-btn {
-  width: 24px; height: 24px; border: none; cursor: pointer;
-  font-size: 12px; display: flex; align-items: center; justify-content: center;
-  background: rgba(0,0,0,0.06); color: var(--jfa-text-secondary); transition: all 0.15s;
+  width: 24px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.06);
+  color: var(--jfa-text-secondary);
+  transition: all 0.15s;
 }
-.card-action-btn:hover { background: rgba(0,0,0,0.12); }
-.card-action-btn.delete:hover { background: #FDECEA; color: #D32F2F; }
+
+.card-action-btn:hover {
+  background: rgba(0,0,0,0.12);
+}
+
+.card-action-btn.delete:hover {
+  background: #FDECEA;
+  color: #D32F2F;
+}
 
 /* Editable field styling */
-.editable { cursor: pointer; border-bottom: 1px dashed transparent; transition: border-color 0.2s; }
-.editable:hover { border-bottom-color: var(--jfa-turquoise); }
+.editable {
+  cursor: pointer;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.2s;
+}
+
+.editable:hover {
+  border-bottom-color: var(--jfa-turquoise);
+}
+
 .edit-input {
-  font-family: 'Montserrat', sans-serif; border: 1px solid var(--jfa-turquoise);
-  outline: none; padding: 2px 4px; background: var(--jfa-turquoise-light);
-  width: 100%; font-weight: inherit; font-size: inherit; color: var(--jfa-text);
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid var(--jfa-turquoise);
+  outline: none;
+  padding: 2px 4px;
+  background: var(--jfa-turquoise-light);
+  width: 100%;
+  font-weight: inherit;
+  font-size: inherit;
+  color: var(--jfa-text);
 }
+
 .edit-input.name-input {
-  font-family: 'Norwester', Impact, sans-serif; text-transform: uppercase;
-  letter-spacing: 0.5px; font-size: 15px;
+  font-family: 'Norwester', Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 15px;
 }
 
-/* SVG connectors */
-.connectors-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-.connectors-svg line { stroke: var(--jfa-border); stroke-width: 2; }
-.connectors-svg line.leader-line { stroke: var(--jfa-turquoise-mid); stroke-width: 2; stroke-dasharray: 6 4; }
+/* Co-Leader Row */
+.co-leader-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+}
+.co-leader-row::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 20px;
+  right: 20px;
+  bottom: -2px;
+  border: 2px dashed var(--jfa-turquoise-mid);
+  pointer-events: none;
+  z-index: 0;
+}
 
-/* Modal */
-.modal-overlay {
-  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;
+.co-leader-badge {
+  font-family: 'Norwester', Impact, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--jfa-turquoise);
+  background: var(--jfa-turquoise-light);
+  padding: 3px 14px;
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  white-space: nowrap;
 }
-.modal-overlay.open { display: flex; }
-.modal {
-  background: var(--jfa-white); padding: 28px 32px; width: 420px; max-width: 95vw;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-}
-.modal h2 { font-size: 18px; margin-bottom: 20px; color: var(--jfa-text); }
-.modal label { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--jfa-text-secondary); margin-bottom: 4px; margin-top: 14px; }
-.modal label:first-of-type { margin-top: 0; }
-.modal input, .modal select {
-  width: 100%; padding: 8px 10px; border: 1px solid var(--jfa-border);
-  font-family: 'Montserrat', sans-serif; font-size: 13px; outline: none;
-}
-.modal input:focus, .modal select:focus { border-color: var(--jfa-turquoise); }
-.modal-buttons { display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end; }
-.modal-btn {
-  padding: 10px 20px; border: none; font-family: 'Montserrat', sans-serif;
-  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
-  cursor: pointer; transition: all 0.2s;
-}
-.modal-btn.primary { background: var(--jfa-turquoise); color: white; }
-.modal-btn.primary:hover { background: #007a9e; }
-.modal-btn.secondary { background: #E8EAED; color: var(--jfa-text); }
-.modal-btn.secondary:hover { background: #D9DDE3; }
-.modal-btn.danger { background: #D32F2F; color: white; }
-.modal-btn.danger:hover { background: #B71C1C; }
 
-/* Toast notification */
-.toast {
-  position: fixed; bottom: 24px; right: 24px; background: var(--jfa-gray);
-  color: white; padding: 12px 20px; font-family: 'Montserrat', sans-serif;
-  font-size: 13px; font-weight: 500; z-index: 2000;
-  transform: translateY(80px); opacity: 0; transition: all 0.3s ease;
+.co-leader-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  align-self: stretch;
+  z-index: 1;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--jfa-turquoise);
 }
-.toast.show { transform: translateY(0); opacity: 1; }
 
-/* Print */
-@media print {
-  .header-controls, .search-box, .btn, .legend, .no-print, .card-actions, .toast { display: none !important; }
-  body { background: white; }
-  .header { background: white; color: black; border-bottom: 3px solid var(--jfa-turquoise); }
-  .logo { color: var(--jfa-turquoise); }
-  .logo span { color: black; }
-  .header h1 { color: black; }
-  .card { box-shadow: none; border: 1px solid #ccc; }
-  .card:hover { transform: none; box-shadow: none; }
-  .co-leader-row::before { border-color: #ccc; }
-  .editable { border-bottom: none; }
+/* Manager Groups */
+.manager-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manager-group-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #AAA;
+  margin-bottom: 6px;
+}
+
+.manager-group-cards {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.group-separator {
+  width: 1px;
+  background: var(--jfa-border);
+  align-self: stretch;
+  margin: 0 12px;
+}
+
+/* Connectors */
+.connectors-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.connectors-svg line {
+  stroke: var(--jfa-border);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.connectors-svg line.leader-line {
+  stroke: var(--jfa-turquoise);
+  stroke-dasharray: 3,3;
+  stroke-width: 2;
+}
+
+/* Summary Bar */
+.summary-bar {
+  background: var(--jfa-white);
+  border: 1px solid var(--jfa-border);
+  border-radius: 6px;
+  padding: 16px 20px 0;
+  margin-top: 20px;
+}
+
+.summary-bar .stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  padding-bottom: 12px;
+}
+
+.budget-context-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px 0 12px;
+  border-top: 1px solid #E8EAED;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.budget-context-row .ctx-label {
+  color: var(--jfa-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.budget-context-row .ctx-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+.budget-context-row .ctx-badge .pct {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.budget-context-row .ctx-badge .lbl {
+  color: var(--jfa-text-secondary);
+}
+
+.budget-context-row .ctx-sep {
+  color: #999;
+  font-size: 10px;
+}
+
+.budget-context-row .ctx-note {
+  color: #999;
+  font-style: italic;
+  font-size: 10px;
+}
+
+.summary-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-stat .label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--jfa-text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.summary-stat .value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--jfa-text);
+}
+
+.summary-stat .value.accent {
+  color: var(--jfa-turquoise);
+}
+
+.budget-bar-wrapper {
+  flex: 1;
+  min-width: 200px;
+}
+
+.budget-bar-track {
+  background: var(--jfa-border);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.budget-bar-fill {
+  height: 100%;
+  background: var(--jfa-turquoise);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Comparison Table */
+.comparison-table-wrapper {
+  background: var(--jfa-white);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid var(--jfa-border);
+  overflow-x: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.comparison-table th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--jfa-border);
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+
+.comparison-table th:nth-child(1) { background-color: #f9f9f9; }
+.comparison-table th:nth-child(2) { background-color: #f9f9f9; }
+.comparison-table th:nth-child(3) { background-color: #FFFDE7; }
+.comparison-table th:nth-child(4) { background-color: #FFFDE7; }
+.comparison-table th:nth-child(5) { background-color: #E6F5FA; }
+.comparison-table th:nth-child(6) { background-color: #E6F5FA; }
+
+.comparison-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--jfa-border);
+}
+
+.comparison-table tr.new-role td {
+  background-color: rgba(46, 139, 87, 0.08);
+}
+
+.badge-inline {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 2px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-w2 {
+  background: #E6F5FA;
+  color: var(--jfa-turquoise);
+}
+
+.badge-contractor {
+  background: #F3E5AB;
+  color: #8B7500;
+}
+
+.badge-open {
+  background: #E8F5E9;
+  color: #2E8B57;
+}
+
+.badge-hourly {
+  background: #FCE4EC;
+  color: #B5395B;
+}
+
+/* Comparison Summary Cards */
+.comparison-summary {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.summary-card {
+  flex: 1;
+  min-width: 220px;
+  background: var(--jfa-white);
+  border: 1px solid var(--jfa-border);
+  border-radius: 6px;
+  padding: 16px;
+  text-align: center;
+}
+
+.summary-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--jfa-text-secondary);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.summary-card .amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--jfa-turquoise);
+}
+
+.callout-section {
+  background: var(--jfa-card-bg);
+  border: 1px solid var(--jfa-border);
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.callout-section h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.role-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.role-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.role-tag.fy26 {
+  background: #FFFDE7;
+  color: #8B7500;
+  border: 1px solid #D4AF37;
+}
+
+.role-tag.fy27 {
+  background: #E8F5E9;
+  color: #2E8B57;
+  border: 1px solid #4CAF50;
+}
+
+/* Controls */
+#searchBoxContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#searchBox {
+  padding: 6px 12px;
+  border: 1px solid var(--jfa-border);
+  border-radius: 3px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+}
+
+#searchBox::placeholder {
+  color: var(--jfa-text-secondary);
+}
+
+/* Toast */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--jfa-turquoise);
+  color: var(--jfa-white);
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#toast.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .header { flex-direction: column; }
+  .tab-view { padding: 16px; }
+  .org-chart-container { min-width: 100%; }
+  .summary-bar .stats-row { flex-direction: column; }
+  .budget-context-row { flex-direction: column; }
+  .comparison-table { font-size: 10px; }
+  .comparison-table td, .comparison-table th { padding: 8px; }
 }
 </style>
 </head>
@@ -280,92 +769,119 @@ h1, h2, h3, h4 {
 
 <div class="header">
   <div class="header-left">
-    <div class="logo">Jazz Forum Arts<span>Tarrytown, NY</span></div>
-    <h1>Organizational Chart</h1>
+    <div class="logo">JFA<span>Org Chart</span></div>
+    <h1 id="headerTitle">FY2025 Org Chart</h1>
   </div>
   <div class="header-controls">
-    <div class="search-box">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" id="searchInput" placeholder="Search name or role..." oninput="handleSearch(this.value)" />
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="switchTab('fy25')">FY2025</button>
+      <button class="tab-btn" onclick="switchTab('fy26')">FY2026</button>
+      <button class="tab-btn" onclick="switchTab('chart')">FY2027</button>
+      <button class="tab-btn" onclick="switchTab('comparison')">Compare</button>
     </div>
-    <button class="btn active" id="btnBase" onclick="toggleView('base')">Base Pay</button>
-    <button class="btn" id="btnLoaded" onclick="toggleView('loaded')">Fully Loaded</button>
-    <button class="btn accent" onclick="openAddModal()">+ Add Person</button>
-    <button class="btn" onclick="exportJSON()">Export</button>
-    <button class="btn" onclick="document.getElementById('importFile').click()">Import</button>
-    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importJSON(event)" />
-    <button class="btn no-print" onclick="window.print()">Print</button>
+    <div id="searchBoxContainer" style="display: none;">
+      <input type="text" id="searchBox" placeholder="Filter by name...">
+      <button class="btn" id="btnBase" style="display: none;" onclick="toggleViewMode('base')">Salaries</button>
+      <button class="btn" id="btnLoaded" style="display: none;" onclick="toggleViewMode('loaded')">Fully Loaded</button>
+    </div>
+    <button class="btn accent" onclick="addPerson()" style="display: none;">+ Add</button>
+    <button class="btn" onclick="exportData()" style="display: none;">Export</button>
+    <button class="btn" onclick="importData()" style="display: none;">Import</button>
   </div>
 </div>
 
-<div class="summary-bar" id="summaryBar"></div>
-
-<div class="legend">
-  <span style="font-size:11px;font-weight:700;color:var(--jfa-text);text-transform:uppercase;letter-spacing:1px;">Departments:</span>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-leadership)"></div> Leadership</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-education)"></div> Education</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-sound)"></div> Sound</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-operations)"></div> Operations</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-fb)"></div> Food & Beverage</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--dept-finance)"></div> Finance</div>
-</div>
-
-<div class="org-container">
-  <div class="org-chart" id="orgChart"></div>
-</div>
-
-<!-- Add/Edit Modal -->
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <h2 id="modalTitle">Add New Position</h2>
-    <input type="hidden" id="editId" />
-    <label>Name</label>
-    <input type="text" id="fName" placeholder="e.g. Jane or Open Hire" />
-    <label>Role / Title</label>
-    <input type="text" id="fRole" placeholder="e.g. Marketing Coordinator" />
-    <label>Annual Base Pay ($)</label>
-    <input type="number" id="fBase" placeholder="0" min="0" step="100" />
-    <label>Pay Note (optional)</label>
-    <input type="text" id="fPayNote" placeholder="e.g. $900/week or Variable / Hourly" />
-    <label>Employment Type</label>
-    <select id="fType">
-      <option value="w2">W-2 Employee</option>
-      <option value="1099">1099 Contractor</option>
-      <option value="open">Open Position</option>
-      <option value="hourly">Variable / Hourly</option>
-    </select>
-    <label>Department</label>
-    <select id="fDept">
-      <option value="leadership">Leadership</option>
-      <option value="education">Education</option>
-      <option value="sound">Sound</option>
-      <option value="operations">Operations</option>
-      <option value="fb">Food & Beverage</option>
-      <option value="finance">Finance</option>
-    </select>
-    <label>Reports To</label>
-    <select id="fReportsTo"></select>
-    <label>Tier (Org Level)</label>
-    <select id="fTier">
-      <option value="2">Tier 2 — Manager Level</option>
-      <option value="3">Tier 3 — Staff Level</option>
-    </select>
-    <label style="display:flex;align-items:center;gap:8px;margin-top:14px;">
-      <input type="checkbox" id="fRemote" style="width:auto;" /> Remote Employee
-    </label>
-    <div class="modal-buttons">
-      <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
-      <button class="modal-btn danger" id="deleteBtn" style="display:none" onclick="deletePerson()">Delete</button>
-      <button class="modal-btn primary" onclick="savePerson()">Save</button>
-    </div>
+<div class="tab-view active" id="fy25View">
+  <div class="info-banner">
+    <strong>FY2025</strong> — Mark Morganelli & Ellen Prior era. Total Salaries & Wages: <strong>$739,097</strong> | Total w/ Taxes & Benefits: <strong>$817,584</strong>
   </div>
+  <div class="org-chart-container org-chart-container-fy25" id="orgChartFY25"></div>
+  <div class="summary-bar" id="summaryBarFY25"></div>
 </div>
 
-<!-- Toast -->
-<div class="toast" id="toast"></div>
+<div class="tab-view" id="fy26View">
+  <div class="info-banner">
+    <strong>FY2026</strong> — FY25 base + Giulia & Aerial added. Mark & Ellen transitioning out, Darrian & Clara stepping in.
+  </div>
+  <div class="org-chart-container org-chart-container-fy26" id="orgChartFY26"></div>
+  <div class="summary-bar" id="summaryBarFY26"></div>
+</div>
+
+<div class="tab-view" id="chartView">
+  <div class="info-banner">
+    <strong>FY2027</strong> — Target staffing structure with open positions and role upgrades.
+  </div>
+  <div class="org-chart-container" id="orgChart"></div>
+  <div class="summary-bar" id="summaryBar"></div>
+</div>
+
+<div class="tab-view" id="comparisonView">
+  <h2 style="margin-bottom: 20px; font-size: 18px; letter-spacing: 1px;">Staffing Comparison: FY2025 → FY2026 → FY2027</h2>
+  <div class="comparison-summary" id="comparisonSummary"></div>
+  <div class="comparison-table-wrapper">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>FY2025</th>
+          <th>FY2026</th>
+          <th>FY2027</th>
+          <th>Type</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody id="comparisonTableBody"></tbody>
+    </table>
+  </div>
+  <div id="comparisonCallouts"></div>
+</div>
+
+<div id="toast"></div>
 
 <script>
-const EMPLOYER_TAX_RATE = 0.0965;
+const EMPLOYER_TAX_RATE = 0.1063;
+
+const BUDGET_CAPS = {
+  fy25: 1991000,   // FY2025 total operating budget
+  fy26: 1991000,   // FY2026 total operating budget (from 2026 Budget Review)
+  chart: 2200000,  // FY2027 aspirational target
+};
+
+const FY25_PEOPLE = [
+  { id: 'board', name: 'Board of Directors', role: 'Governing Body', dept: 'leadership', base: 0, type: 'board', reportsTo: null, tier: 0 },
+  { id: 'mark', name: 'Mark', role: 'Executive Director', dept: 'leadership', base: 140000, type: 'w2', reportsTo: 'board', tier: 1 },
+  { id: 'ellen', name: 'Ellen', role: 'COO / General Manager', dept: 'leadership', base: 130000, type: 'w2', reportsTo: 'board', tier: 1 },
+  { id: 'clara_25', name: 'Clara', role: 'Marketing Director', dept: 'operations', base: 0, type: 'w2', reportsTo: 'ellen', tier: 2, payNote: 'In staff payroll' },
+  { id: 'leigh', name: 'Leigh', role: 'Development Consultant', dept: 'leadership', base: 18000, type: '1099', reportsTo: 'ellen', tier: 2, payNote: '$1,500/mo' },
+  { id: 'john_25', name: 'John', role: 'Chef', dept: 'fb', base: 85100, type: 'w2', reportsTo: 'ellen', tier: 2 },
+  { id: 'sheri_25', name: 'Sheri', role: 'Bookkeeper', dept: 'finance', base: 0, type: 'w2', reportsTo: 'ellen', tier: 2, payNote: 'In staff payroll' },
+  { id: 'isak_25', name: 'Isak', role: 'Marketing, Ops & Program Mgr', dept: 'operations', base: 0, type: '1099', reportsTo: 'clara_25', tier: 3, payNote: 'Contractor', remote: 'Amsterdam' },
+  { id: 'cam_25', name: 'Camilo', role: 'Sound Engineer', dept: 'sound', base: 0, type: '1099', reportsTo: 'mark', tier: 3, payNote: 'Per engagement' },
+  { id: 'neal_25', name: 'Neal', role: 'Jitterbugs / Education', dept: 'education', base: 0, type: '1099', reportsTo: 'mark', tier: 3, payNote: 'Per program' },
+  { id: 'ron_25', name: 'Ron', role: 'Student Ensemble / Education', dept: 'education', base: 0, type: '1099', reportsTo: 'mark', tier: 3, payNote: 'Per program' },
+  { id: 'nancy_25', name: 'Nancy', role: 'Student Ensemble / Education', dept: 'education', base: 0, type: '1099', reportsTo: 'mark', tier: 3, payNote: 'Per program' },
+  { id: 'boh_25', name: 'Kitchen Staff', role: 'Cooks, Prep, Dishwashers', dept: 'fb', base: 0, type: 'hourly', reportsTo: 'john_25', tier: 3, payNote: 'Variable / Hourly' },
+  { id: 'foh_25', name: 'FOH Staff', role: 'Servers, Bussers, Bartenders, Box Office', dept: 'fb', base: 0, type: 'hourly', reportsTo: 'ellen', tier: 3, payNote: 'Variable / Hourly' },
+];
+
+const FY26_PEOPLE = [
+  { id: 'board', name: 'Board of Directors', role: 'Governing Body', dept: 'leadership', base: 0, type: 'board', reportsTo: null, tier: 0 },
+  { id: 'mark', name: 'Mark', role: 'Founder / Artistic Director', dept: 'leadership', base: 70000, type: 'w2', reportsTo: 'board', tier: 1, payNote: "Retiring July '26 (half-year)" },
+  { id: 'ellen', name: 'Ellen', role: 'COO / General Manager', dept: 'leadership', base: 65000, type: 'w2', reportsTo: 'board', tier: 1, payNote: "Retiring July '26 (half-year)" },
+  { id: 'darrian_26', name: 'Darrian', role: 'Executive Director', dept: 'leadership', base: 106000, type: 'w2', reportsTo: 'board', tier: 1, payNote: '$92K→$120K July transition' },
+  { id: 'clara_26', name: 'Clara', role: 'Chief Operating Officer', dept: 'leadership', base: 106000, type: 'w2', reportsTo: 'board', tier: 1, payNote: '$92K→$120K July transition' },
+  { id: 'isak_26', name: 'Isak', role: 'Operations & Marketing Manager', dept: 'operations', base: 102000, type: 'w2', reportsTo: 'clara_26', tier: 2, remote: 'Amsterdam', payNote: 'All-in (Remote)' },
+  { id: 'giulia_26', name: 'Giulia', role: 'Admin / Ops Coordinator', dept: 'education', base: 31200, type: 'hourly', reportsTo: 'darrian_26', tier: 2, payNote: '$30/hr × 20 hrs/wk' },
+  { id: 'aerial_26', name: 'Aerial', role: 'Club Manager (FOH)', dept: 'fb', base: 63700, type: 'hourly', reportsTo: 'clara_26', tier: 2, payNote: '$35/hr × 35 hrs/wk' },
+  { id: 'john_26', name: 'John', role: 'Chef', dept: 'fb', base: 85100, type: 'w2', reportsTo: 'clara_26', tier: 2 },
+  { id: 'sheri_26', name: 'Sheri', role: 'Bookkeeper', dept: 'finance', base: 0, type: 'w2', reportsTo: 'ellen', tier: 2, payNote: 'In staff payroll' },
+  { id: 'leigh_26', name: 'Leigh', role: 'Development Consultant', dept: 'leadership', base: 18000, type: '1099', reportsTo: 'darrian_26', tier: 2, payNote: '$1,500/mo' },
+  { id: 'cam_26', name: 'Cam', role: 'Sound Engineer', dept: 'sound', base: 46800, type: '1099', reportsTo: 'darrian_26', tier: 3, payNote: '$900/week' },
+  { id: 'neal_26', name: 'Neal', role: 'Education Staff', dept: 'education', base: 0, type: '1099', reportsTo: 'isak_26', tier: 3, payNote: 'Per program' },
+  { id: 'ron_26', name: 'Ron', role: 'Student Ensemble / Education', dept: 'education', base: 0, type: '1099', reportsTo: 'isak_26', tier: 3, payNote: 'Per program' },
+  { id: 'nancy_26', name: 'Nancy', role: 'Student Ensemble / Education', dept: 'education', base: 0, type: '1099', reportsTo: 'isak_26', tier: 3, payNote: 'Per program' },
+  { id: 'boh_26', name: 'BOH Staff', role: 'Kitchen, Prep, Dishwashers', dept: 'fb', base: 0, type: 'hourly', reportsTo: 'john_26', tier: 3, payNote: 'Variable / Hourly' },
+  { id: 'foh_26', name: 'FOH Staff', role: 'Servers, Bussers, Bartenders', dept: 'fb', base: 0, type: 'hourly', reportsTo: 'aerial_26', tier: 3, payNote: 'Variable / Hourly' },
+];
 
 const DEFAULT_PEOPLE = [
   { id: 'board', name: 'Board of Directors', role: 'Governing Body', dept: 'leadership', base: 0, type: 'board', reportsTo: null, tier: 0 },
@@ -385,117 +901,119 @@ const DEFAULT_PEOPLE = [
   { id: 'facilities', name: 'Open Hire', role: 'Facilities Manager', dept: 'operations', base: 20000, type: '1099', reportsTo: 'clara', tier: 3 },
 ];
 
-// Load from localStorage or use defaults
-const DATA_VERSION = '3';
-let people = loadData();
+const COMPARISON_DATA = [
+  { role: "Executive Director", fy25: "Mark ($140K)", fy26: "Darrian ($106K)", fy27: "$120K", fy27Type: "W-2", newIn: "", note: "FY26: $92K→$120K July transition" },
+  { role: "COO / GM", fy25: "Ellen ($130K)", fy26: "Clara ($106K)", fy27: "$120K", fy27Type: "W-2", newIn: "", note: "FY26: $92K→$120K July transition" },
+  { role: "Marketing Director", fy25: "Clara (staff payroll)", fy26: "→ promoted to COO", fy27: "→ COO ($120K)", fy27Type: "—", newIn: "", note: "Promoted from Marketing Dir to COO in FY26" },
+  { role: "Founder / Artistic Dir.", fy25: "—", fy26: "Mark ($70K)", fy27: "—", fy27Type: "—", newIn: "", note: "Retiring July '26 (half-year); see ED row for FY25" },
+  { role: "Outgoing COO / GM", fy25: "—", fy26: "Ellen ($65K)", fy27: "—", fy27Type: "—", newIn: "", note: "Retiring July '26 (half-year); see COO row for FY25" },
+  { role: "Ops & Marketing Mgr", fy25: "Isak (1099)", fy26: "Isak ($102K)", fy27: "$102K", fy27Type: "W-2", newIn: "", note: "All-in (Remote); reports to Clara in FY25" },
+  { role: "Chef", fy25: "John ($85K)", fy26: "John ($85K)", fy27: "$85,100", fy27Type: "W-2", newIn: "" },
+  { role: "Bookkeeper / CFO", fy25: "Sheri (payroll)", fy26: "Sheri (payroll)", fy27: "Open Hire ($78K)", fy27Type: "Open Position", newIn: "FY27", note: "Fractional CFO replaces bookkeeper" },
+  { role: "Dev Consultant / Mgr", fy25: "Leigh ($18K)", fy26: "Leigh ($18K)", fy27: "Open Hire ($85K)", fy27Type: "Open Position", newIn: "FY27", note: "Full-time Development Manager" },
+  { role: "Admin / Ops Coordinator", fy25: "—", fy26: "Giulia ($31.2K)", fy27: "$62,400", fy27Type: "W-2", newIn: "FY26", note: "$30/hr PT → FT in FY27" },
+  { role: "Club Manager (FOH)", fy25: "—", fy26: "Aerial ($63.7K)", fy27: "$76,960", fy27Type: "W-2", newIn: "FY26", note: "$35/hr → salaried in FY27" },
+  { role: "Sound Engineer", fy25: "Camilo (per gig)", fy26: "Cam ($46.8K)", fy27: "$46,800", fy27Type: "1099", newIn: "", note: "$900/week" },
+  { role: "Education (Neal)", fy25: "Neal (per pgm)", fy26: "Neal (per pgm)", fy27: "$48K", fy27Type: "1099", newIn: "" },
+  { role: "Student Ensemble (Ron)", fy25: "Ron (per pgm)", fy26: "Ron (per pgm)", fy27: "—", fy27Type: "—", newIn: "", note: "Student Ensemble" },
+  { role: "Student Ensemble (Nancy)", fy25: "Nancy (per pgm)", fy26: "Nancy (per pgm)", fy27: "—", fy27Type: "—", newIn: "", note: "Student Ensemble" },
+  { role: "Education (Boyce)", fy25: "—", fy26: "—", fy27: "$48K", fy27Type: "1099", newIn: "FY27" },
+  { role: "Facilities Manager", fy25: "—", fy26: "—", fy27: "Open Hire ($20K)", fy27Type: "1099", newIn: "FY27" },
+  { role: "Kitchen Staff (BOH)", fy25: "Variable", fy26: "Variable", fy27: "~$82K projected", fy27Type: "hourly", newIn: "" },
+  { role: "FOH Staff", fy25: "Variable", fy26: "Variable", fy27: "~$122K projected", fy27Type: "hourly", newIn: "" },
+];
+
+let people = JSON.parse(JSON.stringify(DEFAULT_PEOPLE));
+let fy26People = JSON.parse(JSON.stringify(FY26_PEOPLE));
+let fy25People = JSON.parse(JSON.stringify(FY25_PEOPLE));
 let viewMode = 'base';
-
-function loadData() {
-  try {
-    const savedVersion = localStorage.getItem('jfa-org-chart-version');
-    const saved = localStorage.getItem('jfa-org-chart-data');
-    if (saved && savedVersion === DATA_VERSION) return JSON.parse(saved);
-  } catch(e) {}
-  // Clear stale data and use fresh defaults
-  try { localStorage.removeItem('jfa-org-chart-data'); } catch(e) {}
-  return JSON.parse(JSON.stringify(DEFAULT_PEOPLE));
-}
-
-function saveData() {
-  try {
-    localStorage.setItem('jfa-org-chart-data', JSON.stringify(people));
-    localStorage.setItem('jfa-org-chart-version', DATA_VERSION);
-  } catch(e) {}
-  showToast('Changes saved');
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2000);
-}
-
-function getFullyLoaded(p) {
-  if (p.type === 'w2' && p.id !== 'isak') return Math.round(p.base * (1 + EMPLOYER_TAX_RATE));
-  return p.base;
-}
+let currentTab = 'fy25';
 
 function fmt(n) { return n === 0 ? '—' : '$' + n.toLocaleString('en-US'); }
 
-// === INLINE EDITING ===
-function startEdit(el, personId, field) {
-  if (el.querySelector('input')) return; // already editing
-  const person = people.find(p => p.id === personId);
-  if (!person) return;
-
-  const currentVal = field === 'base' ? person.base : person[field];
-  const origText = el.textContent;
-
-  const input = document.createElement('input');
-  input.className = field === 'name' ? 'edit-input name-input' : 'edit-input';
-  input.type = field === 'base' ? 'number' : 'text';
-  if (field === 'base') { input.min = 0; input.step = 100; }
-  input.value = currentVal;
-
-  el.textContent = '';
-  el.appendChild(input);
-  input.focus();
-  input.select();
-
-  const finish = () => {
-    let newVal = field === 'base' ? parseFloat(input.value) || 0 : input.value.trim();
-    if (newVal === '' && field !== 'base') newVal = origText;
-    person[field] = newVal;
-    saveData();
-    renderChart();
-  };
-
-  input.addEventListener('blur', finish);
-  input.addEventListener('keydown', e => {
-    if (e.key === 'Enter') { e.preventDefault(); finish(); }
-    if (e.key === 'Escape') { el.textContent = origText; }
-  });
+function getFullyLoaded(p) {
+  if (p.type === 'w2' && p.id !== 'isak' && p.id !== 'isak_26' && p.id !== 'isak_25') return Math.round(p.base * (1 + EMPLOYER_TAX_RATE));
+  return p.base;
 }
 
-function startReportsToEdit(el, personId) {
-  event.stopPropagation();
-  if (el.querySelector('select')) return;
-  const person = people.find(p => p.id === personId);
-  if (!person) return;
-
-  const sel = document.createElement('select');
-  sel.className = 'reports-to-select';
-
-  // Possible managers: anyone in tier 0-2 who isn't the person themselves
-  people.filter(p => p.tier <= 2 && p.id !== personId && p.type !== 'board').forEach(p => {
-    const opt = document.createElement('option');
-    opt.value = p.id;
-    opt.textContent = `${p.name} — ${p.role}`;
-    if (p.id === person.reportsTo) opt.selected = true;
-    sel.appendChild(opt);
-  });
-
-  el.textContent = '';
-  el.appendChild(sel);
-  sel.focus();
-
-  let done = false;
-  const finish = () => {
-    if (done) return;
-    done = true;
-    person.reportsTo = sel.value;
-    saveData();
-    renderChart();
-  };
-
-  sel.addEventListener('change', finish);
-  sel.addEventListener('blur', finish);
-  sel.addEventListener('click', (e) => e.stopPropagation());
+function toggleViewMode(mode) {
+  viewMode = mode;
+  if (currentTab === 'fy25') renderChartFY25();
+  else if (currentTab === 'fy26') renderChartFY26();
+  else if (currentTab === 'chart') renderChart();
 }
 
-// === RENDER ===
-function renderCardHTML(p) {
+function switchTab(tab) {
+  currentTab = tab;
+  const fy25View = document.getElementById('fy25View');
+  const fy26View = document.getElementById('fy26View');
+  const chartView = document.getElementById('chartView');
+  const comparisonView = document.getElementById('comparisonView');
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const headerTitle = document.getElementById('headerTitle');
+  const searchBox = document.getElementById('searchBoxContainer');
+  const btnBase = document.getElementById('btnBase');
+  const btnLoaded = document.getElementById('btnLoaded');
+  const btnAdd = document.querySelector('.header-controls .btn.accent');
+  const btnExport = Array.from(document.querySelectorAll('.header-controls .btn')).find(b => b.textContent === 'Export');
+  const btnImport = Array.from(document.querySelectorAll('.header-controls .btn')).find(b => b.textContent === 'Import');
+
+  fy25View.classList.remove('active');
+  fy26View.classList.remove('active');
+  chartView.classList.remove('active');
+  comparisonView.classList.remove('active');
+  tabButtons.forEach(b => b.classList.remove('active'));
+
+  if (tab === 'fy25') {
+    fy25View.classList.add('active');
+    headerTitle.textContent = 'FY2025 Org Chart';
+    tabButtons[0].classList.add('active');
+    searchBox.style.display = '';
+    btnBase.style.display = '';
+    btnLoaded.style.display = '';
+    if (btnAdd) btnAdd.style.display = 'none';
+    if (btnExport) btnExport.style.display = 'none';
+    if (btnImport) btnImport.style.display = 'none';
+    renderChartFY25();
+  } else if (tab === 'fy26') {
+    fy26View.classList.add('active');
+    headerTitle.textContent = 'FY2026 Org Chart (Current)';
+    tabButtons[1].classList.add('active');
+    searchBox.style.display = '';
+    btnBase.style.display = '';
+    btnLoaded.style.display = '';
+    if (btnAdd) btnAdd.style.display = 'none';
+    if (btnExport) btnExport.style.display = 'none';
+    if (btnImport) btnImport.style.display = 'none';
+    renderChartFY26();
+  } else if (tab === 'chart') {
+    chartView.classList.add('active');
+    headerTitle.textContent = 'FY2027 Org Chart (Aspirational)';
+    tabButtons[2].classList.add('active');
+    searchBox.style.display = '';
+    btnBase.style.display = '';
+    btnLoaded.style.display = '';
+    if (btnAdd) btnAdd.style.display = '';
+    if (btnExport) btnExport.style.display = '';
+    if (btnImport) btnImport.style.display = '';
+    renderChart();
+  } else {
+    comparisonView.classList.add('active');
+    headerTitle.textContent = 'Staffing Comparison: FY2025 → FY2026 → FY2027';
+    tabButtons[3].classList.add('active');
+    searchBox.style.display = 'none';
+    btnBase.style.display = 'none';
+    btnLoaded.style.display = 'none';
+    if (btnAdd) btnAdd.style.display = 'none';
+    if (btnExport) btnExport.style.display = 'none';
+    if (btnImport) btnImport.style.display = 'none';
+    populateComparisonTable();
+  }
+}
+
+function renderCardHTML(p, peopleArray, readOnly) {
+  if (!p) return '';
+
   const pay = viewMode === 'loaded' ? getFullyLoaded(p) : p.base;
   const isBoard = p.type === 'board';
   const isProtected = p.tier <= 1 || p.type === 'board';
@@ -511,32 +1029,43 @@ function renderCardHTML(p) {
   if (isBoard) {
     payHTML = '';
   } else if (p.base > 0) {
-    payHTML = `<div class="pay editable" onclick="startEdit(this,'${p.id}','base')" title="Click to edit salary">${fmt(pay)}<span style="font-size:10px;font-weight:500;color:var(--jfa-text-secondary)"> /yr</span></div>`;
+    const payClass = readOnly ? 'pay' : 'pay editable';
+    const payOnclick = readOnly ? '' : ` onclick="startEdit(this,'${p.id}','base')" title="Click to edit salary"`;
+    payHTML = `<div class="${payClass}"${payOnclick}>${fmt(pay)}<span style="font-size:10px;font-weight:500;color:var(--jfa-text-secondary)"> /yr</span></div>`;
     if (p.payNote) payHTML += `<div class="pay-detail">${p.payNote}</div>`;
-    else if (viewMode === 'loaded' && p.type === 'w2' && p.id !== 'isak') payHTML += `<div class="pay-detail">Base: ${fmt(p.base)}</div>`;
+    else if (viewMode === 'loaded' && p.type === 'w2') payHTML += `<div class="pay-detail">Base: ${fmt(p.base)}</div>`;
   } else if (p.payNote) {
     payHTML = `<div class="pay-detail">${p.payNote}</div>`;
   }
 
   const cardClass = isBoard ? 'card board-card' : `card dept-${p.dept}`;
 
-  const actionsHTML = isBoard ? '' : `
+  let actionsHTML = '';
+  if (!readOnly && !isBoard) {
+    actionsHTML = `
     <div class="card-actions">
       <button class="card-action-btn" onclick="openEditModal('${p.id}')" title="Edit">&#9998;</button>
       ${!isProtected ? `<button class="card-action-btn delete" onclick="confirmDelete('${p.id}')" title="Remove">&#10005;</button>` : ''}
     </div>`;
+  }
 
-  const nameEditable = isBoard ? `<div class="name">${p.name}</div>` :
-    `<div class="name editable" onclick="startEdit(this,'${p.id}','name')" title="Click to edit name">${p.name}</div>`;
-  const roleEditable = isBoard ? `<div class="role">${p.role}</div>` :
-    `<div class="role editable" onclick="startEdit(this,'${p.id}','role')" title="Click to edit role">${p.role}</div>`;
+  const nameClass = readOnly ? 'name' : 'name editable';
+  const nameOnclick = readOnly ? '' : ` onclick="startEdit(this,'${p.id}','name')" title="Click to edit name"`;
+  const nameEditable = `<div class="${nameClass}"${nameOnclick}>${p.name}</div>`;
 
-  // Reports-to line (not shown on board or co-leaders)
+  const roleClass = readOnly ? 'role' : 'role editable';
+  const roleOnclick = readOnly ? '' : ` onclick="startEdit(this,'${p.id}','role')" title="Click to edit role"`;
+  const roleEditable = `<div class="${roleClass}"${roleOnclick}>${p.role}</div>`;
+
   let reportsToHTML = '';
-  if (!isBoard && p.reportsTo) {
-    const mgr = people.find(x => x.id === p.reportsTo);
+  if (!isBoard && p.reportsTo && (peopleArray || []).length > 0) {
+    const mgr = (peopleArray || []).find(x => x.id === p.reportsTo);
     const mgrName = mgr ? mgr.name : p.reportsTo;
-    reportsToHTML = `<div class="reports-to" onclick="event.stopPropagation(); startReportsToEdit(this,'${p.id}')" title="Click to change manager">Reports to: ${mgrName}</div>`;
+    if (readOnly) {
+      reportsToHTML = `<div class="reports-to">Reports to: ${mgrName}</div>`;
+    } else {
+      reportsToHTML = `<div class="reports-to" onclick="event.stopPropagation(); startReportsToEdit(this,'${p.id}')" title="Click to change manager">Reports to: ${mgrName}</div>`;
+    }
   }
 
   return `<div class="${cardClass}" data-id="${p.id}" data-name="${p.name.toLowerCase()}" data-role="${p.role.toLowerCase()}">
@@ -547,6 +1076,274 @@ function renderCardHTML(p) {
     ${badgeHTML}
     ${reportsToHTML}
   </div>`;
+}
+
+function renderChartFY25() {
+  const board = fy25People.find(p => p.tier === 0);
+  const mark = fy25People.find(p => p.id === 'mark');
+  const ellen = fy25People.find(p => p.id === 'ellen');
+  const t2Mark = fy25People.filter(p => p.tier === 2 && p.reportsTo === 'mark');
+  const t2Ellen = fy25People.filter(p => p.tier === 2 && p.reportsTo === 'ellen');
+  const t3 = fy25People.filter(p => p.tier === 3);
+
+  const t3Groups = {};
+  t3.forEach(p => {
+    const mgr = p.reportsTo;
+    if (!t3Groups[mgr]) t3Groups[mgr] = [];
+    t3Groups[mgr].push(p);
+  });
+
+  let html = '';
+  html += `<div class="tier-label">Governance</div>`;
+  html += `<div class="tier">${renderCardHTML(board, fy25People, true)}</div>`;
+  html += `<div class="tier-spacer"></div>`;
+
+  html += `<div class="tier-label">Co-Leaders</div>`;
+  html += `<div class="tier"><div class="co-leader-row"><div class="co-leader-badge">Co-Leaders</div>`;
+  html += renderCardHTML(mark, fy25People, true);
+  html += `<div class="co-leader-divider">&amp;</div>`;
+  html += renderCardHTML(ellen, fy25People, true);
+  html += `</div></div>`;
+  html += `<div class="tier-spacer"></div>`;
+
+  html += `<div class="tier-label">Managers</div>`;
+  html += `<div class="tier">`;
+  if (t2Mark.length) {
+    html += `<div class="manager-group"><div class="manager-group-label">Reports to ${mark.name}</div><div class="manager-group-cards">${t2Mark.map(p => renderCardHTML(p, fy25People, true)).join('')}</div></div>`;
+  }
+  if (t2Mark.length && t2Ellen.length) html += `<div class="group-separator"></div>`;
+  if (t2Ellen.length) {
+    html += `<div class="manager-group"><div class="manager-group-label">Reports to ${ellen.name}</div><div class="manager-group-cards">${t2Ellen.map(p => renderCardHTML(p, fy25People, true)).join('')}</div></div>`;
+  }
+  html += `</div><div class="tier-spacer"></div>`;
+
+  html += `<div class="tier-label">Staff</div><div class="tier">`;
+  // Build manager order: mark's direct reports, then each t2Mark member's reports,
+  // then ellen's direct reports, then each t2Ellen member's reports (including clara_25's reports like Isak)
+  const t3Order = ['mark', ...t2Mark.map(p => p.id), 'ellen', ...t2Ellen.map(p => p.id)];
+  let firstGroup = true;
+  t3Order.forEach(mgrId => {
+    if (t3Groups[mgrId]) {
+      const mgrPerson = fy25People.find(p => p.id === mgrId);
+      if (!firstGroup) html += `<div class="group-separator"></div>`;
+      html += `<div class="manager-group"><div class="manager-group-label">Reports to ${mgrPerson.name}</div><div class="manager-group-cards">${t3Groups[mgrId].map(p => renderCardHTML(p, fy25People, true)).join('')}</div></div>`;
+      firstGroup = false;
+    }
+  });
+  html += `</div>`;
+
+  document.getElementById('orgChartFY25').innerHTML = html;
+  requestAnimationFrame(() => drawConnectorsFY25());
+  updateSummaryFY25();
+}
+
+function drawConnectorsFY25() {
+  const old = document.querySelector('#orgChartFY25 .connectors-svg');
+  if (old) old.remove();
+  const chart = document.getElementById('orgChartFY25');
+  const chartRect = chart.getBoundingClientRect();
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.classList.add('connectors-svg');
+  svg.setAttribute('width', chart.scrollWidth);
+  svg.setAttribute('height', chart.scrollHeight);
+
+  fy25People.forEach(p => {
+    if (!p.reportsTo) return;
+    const childEl = chart.querySelector(`[data-id="${p.id}"]`);
+    const parentEl = chart.querySelector(`[data-id="${p.reportsTo}"]`);
+    if (!childEl || !parentEl) return;
+
+    const cRect = childEl.getBoundingClientRect();
+    const pRect = parentEl.getBoundingClientRect();
+    const x1 = pRect.left + pRect.width / 2 - chartRect.left;
+    const y1 = pRect.bottom - chartRect.top;
+    const x2 = cRect.left + cRect.width / 2 - chartRect.left;
+    const y2 = cRect.top - chartRect.top;
+    const midY = y1 + (y2 - y1) / 2;
+    const cls = p.tier === 1 ? 'leader-line' : '';
+
+    [[x1,y1,x1,midY],[x1,midY,x2,midY],[x2,midY,x2,y2]].forEach(([ax,ay,bx,by]) => {
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1',ax); line.setAttribute('y1',ay);
+      line.setAttribute('x2',bx); line.setAttribute('y2',by);
+      if (cls) line.classList.add(cls);
+      svg.appendChild(line);
+    });
+  });
+  chart.appendChild(svg);
+}
+
+function updateSummaryFY25() {
+  const w2 = fy25People.filter(p => p.type === 'w2');
+  const contractors = fy25People.filter(p => p.type === '1099');
+  const totalBase = fy25People.reduce((sum, p) => sum + p.base, 0);
+  const totalLoaded = fy25People.reduce((sum, p) => sum + getFullyLoaded(p), 0);
+  const display = viewMode === 'loaded' ? totalLoaded : totalBase;
+  const budgetCap = BUDGET_CAPS.fy25;
+  const utilization = ((display / budgetCap) * 100).toFixed(1);
+  const employerTax = totalLoaded - totalBase;
+
+  const fy25PersonnelPct = ((817584 / budgetCap) * 100).toFixed(1); // FY25 actuals from QuickBooks
+  const fy25PctColor = parseFloat(fy25PersonnelPct) > 80 ? '#B5395B' : parseFloat(fy25PersonnelPct) > 65 ? '#D4760A' : '#2E8B57';
+
+  document.getElementById('summaryBarFY25').innerHTML = `
+    <div class="stats-row">
+      <div class="summary-stat"><span class="label">W-2 Employees</span><span class="value">${w2.length}</span></div>
+      <div class="summary-stat"><span class="label">1099 Contractors</span><span class="value">${contractors.length}</span></div>
+      <div class="summary-stat"><span class="label">${viewMode === 'loaded' ? 'Total Fully Loaded' : 'Total Base Payroll'}</span><span class="value accent">${fmt(display)}</span></div>
+      <div class="summary-stat"><span class="label">Employer Tax</span><span class="value">${fmt(Math.round(employerTax))}</span></div>
+      <div class="summary-stat"><span class="label">Budget Cap</span><span class="value">${fmt(budgetCap)}</span></div>
+      <div class="summary-stat budget-bar-wrapper"><span class="label">Utilization: ${utilization}%</span><div class="budget-bar-track"><div class="budget-bar-fill" style="width:${Math.min(utilization,100)}%;${parseFloat(utilization)>95?'background:#D4760A;':''}${parseFloat(utilization)>100?'background:#B5395B;':''}"></div></div></div>
+    </div>
+    <div class="budget-context-row">
+      <span class="ctx-label">Budget Context:</span>
+      <span class="ctx-badge" style="background:${fy25PctColor}12"><span class="pct" style="color:${fy25PctColor}">${fy25PersonnelPct}%</span><span class="lbl">Personnel</span></span>
+      <span class="ctx-sep">|</span>
+      <span class="ctx-badge" style="background:#E6F5FA"><span class="pct" style="color:#008DB9">50–65%</span><span class="lbl">Nonprofit Arts Avg</span></span>
+      ${parseFloat(fy25PersonnelPct) > 65 ? '<span class="ctx-note">(Arts venues typically run higher due to talent intensity)</span>' : ''}
+    </div>
+  `;
+}
+
+function renderChartFY26() {
+  const board = fy26People.find(p => p.tier === 0);
+  const mark = fy26People.find(p => p.id === 'mark');
+  const ellen = fy26People.find(p => p.id === 'ellen');
+  const darrian_26 = fy26People.find(p => p.id === 'darrian_26');
+  const clara_26 = fy26People.find(p => p.id === 'clara_26');
+
+  const t2Darrian = fy26People.filter(p => p.tier === 2 && p.reportsTo === 'darrian_26');
+  const t2Clara = fy26People.filter(p => p.tier === 2 && p.reportsTo === 'clara_26');
+  const t3 = fy26People.filter(p => p.tier === 3);
+
+  const t3Groups = {};
+  t3.forEach(p => {
+    const mgr = p.reportsTo;
+    if (!t3Groups[mgr]) t3Groups[mgr] = [];
+    t3Groups[mgr].push(p);
+  });
+
+  let html = '';
+  html += `<div class="tier-label">Governance</div>`;
+  html += `<div class="tier">${renderCardHTML(board, fy26People, true)}</div>`;
+  html += `<div class="tier-spacer"></div>`;
+
+  html += `<div class="tier-label">Leadership Transition</div>`;
+  html += `<div class="tier" style="gap:24px;">`;
+  /* Outgoing pair */
+  html += `<div class="co-leader-row" style="padding:16px 20px;">`;
+  html += `<div class="co-leader-badge" style="letter-spacing:2px;color:#999;background:#f5f5f5;">Outgoing</div>`;
+  html += renderCardHTML(mark, fy26People, true);
+  html += `<div class="co-leader-divider" style="color:#999;">&amp;</div>`;
+  html += renderCardHTML(ellen, fy26People, true);
+  html += `</div>`;
+  /* Arrow */
+  html += `<div style="display:flex;align-items:center;align-self:stretch;font-size:28px;color:var(--jfa-turquoise);font-weight:700;">→</div>`;
+  /* Incoming pair */
+  html += `<div class="co-leader-row" style="padding:16px 20px;">`;
+  html += `<div class="co-leader-badge">Incoming Co-Leaders</div>`;
+  html += renderCardHTML(darrian_26, fy26People, true);
+  html += `<div class="co-leader-divider">&amp;</div>`;
+  html += renderCardHTML(clara_26, fy26People, true);
+  html += `</div>`;
+  html += `</div>`;
+  html += `<div class="tier-spacer"></div>`;
+
+  html += `<div class="tier-label">Managers</div>`;
+  html += `<div class="tier">`;
+  if (t2Darrian.length) {
+    html += `<div class="manager-group"><div class="manager-group-label">Reports to ${darrian_26.name}</div><div class="manager-group-cards">${t2Darrian.map(p => renderCardHTML(p, fy26People, true)).join('')}</div></div>`;
+  }
+  if (t2Darrian.length && t2Clara.length) html += `<div class="group-separator"></div>`;
+  if (t2Clara.length) {
+    html += `<div class="manager-group"><div class="manager-group-label">Reports to ${clara_26.name}</div><div class="manager-group-cards">${t2Clara.map(p => renderCardHTML(p, fy26People, true)).join('')}</div></div>`;
+  }
+  html += `</div><div class="tier-spacer"></div>`;
+
+  html += `<div class="tier-label">Staff</div><div class="tier">`;
+  const t3Order = ['darrian_26', ...t2Darrian.map(p => p.id), 'clara_26', ...t2Clara.map(p => p.id)];
+  let firstGroup = true;
+  t3Order.forEach(mgrId => {
+    if (t3Groups[mgrId]) {
+      const mgrPerson = fy26People.find(p => p.id === mgrId);
+      if (!firstGroup) html += `<div class="group-separator"></div>`;
+      html += `<div class="manager-group"><div class="manager-group-label">Reports to ${mgrPerson.name}</div><div class="manager-group-cards">${t3Groups[mgrId].map(p => renderCardHTML(p, fy26People, true)).join('')}</div></div>`;
+      firstGroup = false;
+    }
+  });
+  html += `</div>`;
+
+  document.getElementById('orgChartFY26').innerHTML = html;
+  requestAnimationFrame(() => drawConnectorsFY26());
+  updateSummaryFY26();
+}
+
+function drawConnectorsFY26() {
+  const old = document.querySelector('#orgChartFY26 .connectors-svg');
+  if (old) old.remove();
+  const chart = document.getElementById('orgChartFY26');
+  const chartRect = chart.getBoundingClientRect();
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.classList.add('connectors-svg');
+  svg.setAttribute('width', chart.scrollWidth);
+  svg.setAttribute('height', chart.scrollHeight);
+
+  fy26People.forEach(p => {
+    if (!p.reportsTo) return;
+    const childEl = chart.querySelector(`[data-id="${p.id}"]`);
+    const parentEl = chart.querySelector(`[data-id="${p.reportsTo}"]`);
+    if (!childEl || !parentEl) return;
+
+    const cRect = childEl.getBoundingClientRect();
+    const pRect = parentEl.getBoundingClientRect();
+    const x1 = pRect.left + pRect.width / 2 - chartRect.left;
+    const y1 = pRect.bottom - chartRect.top;
+    const x2 = cRect.left + cRect.width / 2 - chartRect.left;
+    const y2 = cRect.top - chartRect.top;
+    const midY = y1 + (y2 - y1) / 2;
+    const cls = p.tier === 1 ? 'leader-line' : '';
+
+    [[x1,y1,x1,midY],[x1,midY,x2,midY],[x2,midY,x2,y2]].forEach(([ax,ay,bx,by]) => {
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1',ax); line.setAttribute('y1',ay);
+      line.setAttribute('x2',bx); line.setAttribute('y2',by);
+      if (cls) line.classList.add(cls);
+      svg.appendChild(line);
+    });
+  });
+  chart.appendChild(svg);
+}
+
+function updateSummaryFY26() {
+  const w2 = fy26People.filter(p => p.type === 'w2');
+  const contractors = fy26People.filter(p => p.type === '1099');
+  const totalBase = fy26People.reduce((sum, p) => sum + p.base, 0);
+  const totalLoaded = fy26People.reduce((sum, p) => sum + getFullyLoaded(p), 0);
+  const display = viewMode === 'loaded' ? totalLoaded : totalBase;
+  const budgetCap = BUDGET_CAPS.fy26;
+  const utilization = ((display / budgetCap) * 100).toFixed(1);
+  const employerTax = totalLoaded - totalBase;
+
+  const fy26PersonnelPct = ((953099 / budgetCap) * 100).toFixed(1); // FY26 budget: $953,099 total personnel
+  const fy26PctColor = parseFloat(fy26PersonnelPct) > 80 ? '#B5395B' : parseFloat(fy26PersonnelPct) > 65 ? '#D4760A' : '#2E8B57';
+
+  document.getElementById('summaryBarFY26').innerHTML = `
+    <div class="stats-row">
+      <div class="summary-stat"><span class="label">W-2 Employees</span><span class="value">${w2.length}</span></div>
+      <div class="summary-stat"><span class="label">1099 Contractors</span><span class="value">${contractors.length}</span></div>
+      <div class="summary-stat"><span class="label">${viewMode === 'loaded' ? 'Total Fully Loaded' : 'Total Base Payroll'}</span><span class="value accent">${fmt(display)}</span></div>
+      <div class="summary-stat"><span class="label">Employer Tax</span><span class="value">${fmt(Math.round(employerTax))}</span></div>
+      <div class="summary-stat"><span class="label">Budget Cap</span><span class="value">${fmt(budgetCap)}</span></div>
+      <div class="summary-stat budget-bar-wrapper"><span class="label">Utilization: ${utilization}%</span><div class="budget-bar-track"><div class="budget-bar-fill" style="width:${Math.min(utilization,100)}%;${parseFloat(utilization)>95?'background:#D4760A;':''}${parseFloat(utilization)>100?'background:#B5395B;':''}"></div></div></div>
+    </div>
+    <div class="budget-context-row">
+      <span class="ctx-label">Budget Context:</span>
+      <span class="ctx-badge" style="background:${fy26PctColor}12"><span class="pct" style="color:${fy26PctColor}">${fy26PersonnelPct}%</span><span class="lbl">Personnel</span></span>
+      <span class="ctx-sep">|</span>
+      <span class="ctx-badge" style="background:#E6F5FA"><span class="pct" style="color:#008DB9">50–65%</span><span class="lbl">Nonprofit Arts Avg</span></span>
+      ${parseFloat(fy26PersonnelPct) > 65 ? '<span class="ctx-note">(Arts venues typically run higher due to talent intensity)</span>' : ''}
+    </div>
+  `;
 }
 
 function renderChart() {
@@ -566,39 +1363,37 @@ function renderChart() {
   });
 
   let html = '';
-
-  // Tier 0
   html += `<div class="tier-label">Governance</div>`;
-  html += `<div class="tier">${renderCardHTML(board)}</div>`;
+  html += `<div class="tier">${renderCardHTML(board, people, false)}</div>`;
   html += `<div class="tier-spacer"></div>`;
 
-  // Tier 1
   html += `<div class="tier-label">Co-Leadership</div>`;
-  html += `<div class="tier"><div class="co-leader-row"><div class="co-leader-badge">Co-Leaders</div>${renderCardHTML(darrian)}<div class="co-leader-divider">&amp;</div>${renderCardHTML(clara)}</div></div>`;
+  html += `<div class="tier"><div class="co-leader-row"><div class="co-leader-badge">Co-Leaders</div>`;
+  html += renderCardHTML(darrian, people, false);
+  html += `<div class="co-leader-divider">&amp;</div>`;
+  html += renderCardHTML(clara, people, false);
+  html += `</div></div>`;
   html += `<div class="tier-spacer"></div>`;
 
-  // Tier 2
   html += `<div class="tier-label">Managers</div>`;
   html += `<div class="tier">`;
   if (t2Darrian.length) {
-    html += `<div class="manager-group"><div class="manager-group-label">Reports to ${darrian.name}</div><div class="manager-group-cards">${t2Darrian.map(p => renderCardHTML(p)).join('')}</div></div>`;
+    html += `<div class="manager-group"><div class="manager-group-label">Reports to ${darrian.name}</div><div class="manager-group-cards">${t2Darrian.map(p => renderCardHTML(p, people, false)).join('')}</div></div>`;
   }
   if (t2Darrian.length && t2Clara.length) html += `<div class="group-separator"></div>`;
   if (t2Clara.length) {
-    html += `<div class="manager-group"><div class="manager-group-label">Reports to ${clara.name}</div><div class="manager-group-cards">${t2Clara.map(p => renderCardHTML(p)).join('')}</div></div>`;
+    html += `<div class="manager-group"><div class="manager-group-label">Reports to ${clara.name}</div><div class="manager-group-cards">${t2Clara.map(p => renderCardHTML(p, people, false)).join('')}</div></div>`;
   }
   html += `</div><div class="tier-spacer"></div>`;
 
-  // Tier 3
   html += `<div class="tier-label">Staff</div><div class="tier">`;
-  // Build order dynamically: darrian first, then tier-2 managers under darrian, then clara, then tier-2 managers under clara
   const t3Order = ['darrian', ...t2Darrian.map(p => p.id), 'clara', ...t2Clara.map(p => p.id)];
   let firstGroup = true;
   t3Order.forEach(mgrId => {
     if (t3Groups[mgrId]) {
       const mgrPerson = people.find(p => p.id === mgrId);
       if (!firstGroup) html += `<div class="group-separator"></div>`;
-      html += `<div class="manager-group"><div class="manager-group-label">Reports to ${mgrPerson.name}</div><div class="manager-group-cards">${t3Groups[mgrId].map(p => renderCardHTML(p)).join('')}</div></div>`;
+      html += `<div class="manager-group"><div class="manager-group-label">Reports to ${mgrPerson.name}</div><div class="manager-group-cards">${t3Groups[mgrId].map(p => renderCardHTML(p, people, false)).join('')}</div></div>`;
       firstGroup = false;
     }
   });
@@ -610,7 +1405,7 @@ function renderChart() {
 }
 
 function drawConnectors() {
-  const old = document.querySelector('.connectors-svg');
+  const old = document.querySelector('#orgChart .connectors-svg');
   if (old) old.remove();
   const chart = document.getElementById('orgChart');
   const chartRect = chart.getBoundingClientRect();
@@ -651,189 +1446,162 @@ function updateSummary() {
   const totalBase = people.reduce((sum, p) => sum + p.base, 0);
   const totalLoaded = people.reduce((sum, p) => sum + getFullyLoaded(p), 0);
   const display = viewMode === 'loaded' ? totalLoaded : totalBase;
-  const budgetCap = 1000000;
+  const budgetCap = BUDGET_CAPS.chart;
   const utilization = ((display / budgetCap) * 100).toFixed(1);
   const employerTax = totalLoaded - totalBase;
 
+  const fy27PctColor = parseFloat(utilization) > 80 ? '#B5395B' : parseFloat(utilization) > 65 ? '#D4760A' : '#2E8B57';
+
   document.getElementById('summaryBar').innerHTML = `
-    <div class="summary-stat"><span class="label">W-2 Employees</span><span class="value">${w2.length}</span></div>
-    <div class="summary-stat"><span class="label">1099 Contractors</span><span class="value">${contractors.length}</span></div>
-    <div class="summary-stat"><span class="label">${viewMode === 'loaded' ? 'Total Fully Loaded' : 'Total Base Payroll'}</span><span class="value accent">${fmt(display)}</span></div>
-    <div class="summary-stat"><span class="label">Employer Tax</span><span class="value">${fmt(Math.round(employerTax))}</span></div>
-    <div class="summary-stat"><span class="label">Budget Cap</span><span class="value">${fmt(budgetCap)}</span></div>
-    <div class="summary-stat budget-bar-wrapper"><span class="label">Utilization: ${utilization}%</span><div class="budget-bar-track"><div class="budget-bar-fill" style="width:${Math.min(utilization,100)}%;${parseFloat(utilization)>95?'background:#D4760A;':''}${parseFloat(utilization)>100?'background:#B5395B;':''}"></div></div></div>
+    <div class="stats-row">
+      <div class="summary-stat"><span class="label">W-2 Employees</span><span class="value">${w2.length}</span></div>
+      <div class="summary-stat"><span class="label">1099 Contractors</span><span class="value">${contractors.length}</span></div>
+      <div class="summary-stat"><span class="label">${viewMode === 'loaded' ? 'Total Fully Loaded' : 'Total Base Payroll'}</span><span class="value accent">${fmt(display)}</span></div>
+      <div class="summary-stat"><span class="label">Employer Tax</span><span class="value">${fmt(Math.round(employerTax))}</span></div>
+      <div class="summary-stat"><span class="label">Budget Cap</span><span class="value">${fmt(budgetCap)}</span></div>
+      <div class="summary-stat budget-bar-wrapper"><span class="label">Utilization: ${utilization}%</span><div class="budget-bar-track"><div class="budget-bar-fill" style="width:${Math.min(utilization,100)}%;${parseFloat(utilization)>95?'background:#D4760A;':''}${parseFloat(utilization)>100?'background:#B5395B;':''}"></div></div></div>
+    </div>
+    <div class="budget-context-row">
+      <span class="ctx-label">Budget Context:</span>
+      <span class="ctx-badge" style="background:${fy27PctColor}12"><span class="pct" style="color:${fy27PctColor}">${utilization}%</span><span class="lbl">Personnel</span></span>
+      <span class="ctx-sep">|</span>
+      <span class="ctx-badge" style="background:#E6F5FA"><span class="pct" style="color:#008DB9">50–65%</span><span class="lbl">Nonprofit Arts Avg</span></span>
+      ${parseFloat(utilization) > 65 ? '<span class="ctx-note">(Arts venues typically run higher due to talent intensity)</span>' : ''}
+    </div>
   `;
 }
 
-// === MODAL ===
-function populateReportsTo(selectedId) {
-  const sel = document.getElementById('fReportsTo');
-  sel.innerHTML = '';
-  people.filter(p => p.tier <= 2 && p.type !== 'board').forEach(p => {
-    const opt = document.createElement('option');
-    opt.value = p.id;
-    opt.textContent = `${p.name} — ${p.role}`;
-    if (p.id === selectedId) opt.selected = true;
-    sel.appendChild(opt);
+function populateComparisonTable() {
+  const tbody = document.getElementById('comparisonTableBody');
+  tbody.innerHTML = '';
+
+  COMPARISON_DATA.forEach(row => {
+    const tr = document.createElement('tr');
+    if (row.newIn) tr.classList.add('new-role');
+
+    const typeClass = row.fy27Type === 'W-2' ? 'w2' :
+                     row.fy27Type === '1099' ? 'contractor' :
+                     row.fy27Type === 'Open Position' ? 'open' : 'hourly';
+
+    tr.innerHTML = `
+      <td><strong>${row.role}</strong></td>
+      <td>${row.fy25 || '—'}</td>
+      <td>${row.fy26 || '—'}</td>
+      <td><strong>${row.fy27}</strong></td>
+      <td><span class="badge-inline badge-${typeClass}">${row.fy27Type}</span></td>
+      <td>${row.note || '—'}</td>
+    `;
+    tbody.appendChild(tr);
   });
+
+  renderComparisonSummary();
 }
 
-function openAddModal() {
-  document.getElementById('modalTitle').textContent = 'Add New Position';
-  document.getElementById('editId').value = '';
-  document.getElementById('fName').value = '';
-  document.getElementById('fRole').value = '';
-  document.getElementById('fBase').value = '';
-  document.getElementById('fPayNote').value = '';
-  document.getElementById('fType').value = '1099';
-  document.getElementById('fDept').value = 'operations';
-  document.getElementById('fTier').value = '3';
-  document.getElementById('fRemote').checked = false;
-  document.getElementById('deleteBtn').style.display = 'none';
-  populateReportsTo('clara');
-  document.getElementById('modalOverlay').classList.add('open');
+function renderComparisonSummary() {
+  const fy25Total = 739097;
+  const fy26Total = 860400; // From 2026 budget: Total 51100 Salaries and Wages
+  const fy27Total = people.reduce((sum, p) => sum + p.base, 0);
+
+  let html = `
+    <div class="summary-card">
+      <h3>FY2025</h3>
+      <div class="amount">${fmt(fy25Total)}</div>
+      <div style="font-size: 10px; color: var(--jfa-text-secondary); margin-top: 8px;">Total Salaries & Wages</div>
+    </div>
+    <div class="summary-card">
+      <h3>FY2026</h3>
+      <div class="amount">${fmt(fy26Total)}</div>
+      <div style="font-size: 10px; color: var(--jfa-text-secondary); margin-top: 8px;">Mid-year leadership transition</div>
+    </div>
+    <div class="summary-card">
+      <h3>FY2027</h3>
+      <div class="amount">${fmt(fy27Total)}</div>
+      <div style="font-size: 10px; color: var(--jfa-text-secondary); margin-top: 8px;">Target Budget</div>
+    </div>
+  `;
+
+  document.getElementById('comparisonSummary').innerHTML = html;
+
+  const fy26Added = ['Giulia', 'Aerial'];
+  const fy27NewUpgraded = ['CFO', 'Development Manager', 'Boyce', 'Facilities Manager'];
+
+  let calloutHtml = `
+    <div class="callout-section">
+      <h4>Added in FY2026</h4>
+      <div class="role-list">
+        ${fy26Added.map(role => `<span class="role-tag fy26">${role}</span>`).join('')}
+      </div>
+    </div>
+    <div class="callout-section">
+      <h4>New / Upgraded in FY2027</h4>
+      <div class="role-list">
+        ${fy27NewUpgraded.map(role => `<span class="role-tag fy27">${role}</span>`).join('')}
+      </div>
+    </div>
+  `;
+
+  document.getElementById('comparisonCallouts').innerHTML = calloutHtml;
 }
 
-function openEditModal(id) {
-  const p = people.find(x => x.id === id);
-  if (!p) return;
-  document.getElementById('modalTitle').textContent = 'Edit Position';
-  document.getElementById('editId').value = p.id;
-  document.getElementById('fName').value = p.name;
-  document.getElementById('fRole').value = p.role;
-  document.getElementById('fBase').value = p.base;
-  document.getElementById('fPayNote').value = p.payNote || '';
-  document.getElementById('fType').value = p.type;
-  document.getElementById('fDept').value = p.dept;
-  document.getElementById('fTier').value = String(p.tier);
-  document.getElementById('fRemote').checked = !!p.remote;
-  const isProtected = p.tier <= 1;
-  document.getElementById('deleteBtn').style.display = isProtected ? 'none' : 'inline-block';
-  populateReportsTo(p.reportsTo);
-  document.getElementById('modalOverlay').classList.add('open');
-}
-
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
-}
-
-function savePerson() {
-  const editId = document.getElementById('editId').value;
-  const name = document.getElementById('fName').value.trim() || 'New Hire';
-  const role = document.getElementById('fRole').value.trim() || 'TBD';
-  const base = parseFloat(document.getElementById('fBase').value) || 0;
-  const payNote = document.getElementById('fPayNote').value.trim() || undefined;
-  const type = document.getElementById('fType').value;
-  const dept = document.getElementById('fDept').value;
-  const reportsTo = document.getElementById('fReportsTo').value;
-  const tier = parseInt(document.getElementById('fTier').value);
-  const remote = document.getElementById('fRemote').checked ? 'Remote' : undefined;
-
-  if (editId) {
-    const p = people.find(x => x.id === editId);
-    if (p) {
-      Object.assign(p, { name, role, base, payNote, type, dept, reportsTo, tier, remote });
-    }
-  } else {
-    const newId = 'person_' + Date.now();
-    people.push({ id: newId, name, role, base, payNote, type, dept, reportsTo, tier, remote });
-  }
-
-  saveData();
-  closeModal();
+function addPerson() {
+  const name = prompt('Name:');
+  if (!name) return;
+  const role = prompt('Role:');
+  if (!role) return;
+  const base = parseInt(prompt('Base Salary:')) || 0;
+  const type = prompt('Type (w2/1099/hourly):') || 'w2';
+  const id = name.toLowerCase().replace(/\s+/g, '_');
+  const newPerson = { id, name, role, dept: 'leadership', base, type, reportsTo: 'darrian', tier: 2 };
+  people.push(newPerson);
   renderChart();
+  showToast('Person added');
 }
 
-function confirmDelete(id) {
-  const p = people.find(x => x.id === id);
-  if (!p) return;
-  if (confirm(`Remove "${p.name} — ${p.role}" from the org chart?`)) {
-    // Also remove anyone who reports to this person
-    const removeIds = new Set([id]);
-    let changed = true;
-    while (changed) {
-      changed = false;
-      people.forEach(x => {
-        if (removeIds.has(x.reportsTo) && !removeIds.has(x.id)) {
-          removeIds.add(x.id);
-          changed = true;
-        }
-      });
-    }
-    const removedCount = removeIds.size;
-    people = people.filter(x => !removeIds.has(x.id));
-    saveData();
-    renderChart();
-    showToast(`Removed ${removedCount} position${removedCount > 1 ? 's' : ''}`);
-  }
-}
-
-function deletePerson() {
-  const id = document.getElementById('editId').value;
-  if (id) { closeModal(); confirmDelete(id); }
-}
-
-// === VIEW TOGGLE ===
-function toggleView(mode) {
-  viewMode = mode;
-  document.getElementById('btnBase').classList.toggle('active', mode === 'base');
-  document.getElementById('btnLoaded').classList.toggle('active', mode === 'loaded');
-  renderChart();
-}
-
-// === SEARCH ===
-function handleSearch(query) {
-  const cards = document.querySelectorAll('.card[data-id]');
-  if (!query.trim()) { cards.forEach(c => c.classList.remove('highlight','dimmed')); return; }
-  const q = query.toLowerCase();
-  let hasMatch = false;
-  cards.forEach(c => {
-    const match = (c.getAttribute('data-name')||'').includes(q) || (c.getAttribute('data-role')||'').includes(q);
-    c.classList.toggle('highlight', match);
-    c.classList.toggle('dimmed', !match);
-    if (match) hasMatch = true;
-  });
-  if (!hasMatch) cards.forEach(c => c.classList.remove('dimmed'));
-}
-
-// === EXPORT / IMPORT ===
-function exportJSON() {
-  const blob = new Blob([JSON.stringify(people, null, 2)], { type: 'application/json' });
+function exportData() {
+  const json = JSON.stringify(people, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'jfa-org-chart-data.json';
+  a.download = 'jfa-org-chart.json';
+  document.body.appendChild(a);
   a.click();
+  document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  showToast('Exported to JSON');
+  showToast('Data exported');
 }
 
-function importJSON(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    try {
-      const data = JSON.parse(e.target.result);
-      if (Array.isArray(data) && data.length > 0 && data[0].id) {
-        people = data;
-        saveData();
+function importData() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        people = JSON.parse(ev.target.result);
         renderChart();
-        showToast('Imported successfully');
-      } else {
-        alert('Invalid file format. Expected a JSON array of people.');
+        showToast('Data imported');
+      } catch (err) {
+        showToast('Import failed');
       }
-    } catch(err) {
-      alert('Could not parse file: ' + err.message);
-    }
+    };
+    reader.readAsText(file);
   };
-  reader.readAsText(file);
-  event.target.value = '';
+  input.click();
 }
 
-// === INIT ===
-window.addEventListener('resize', () => requestAnimationFrame(drawConnectors));
-renderChart();
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+window.addEventListener('load', () => {
+  renderChartFY25();
+});
 </script>
 
 </body>
